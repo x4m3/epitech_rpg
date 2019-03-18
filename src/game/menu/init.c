@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 void display_menu(env_t *env, char *name)
 {

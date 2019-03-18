@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 void set_window(env_t *env)
 {

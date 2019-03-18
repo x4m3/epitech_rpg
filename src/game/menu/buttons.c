@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 void check_g_menu_buttons(env_t *env)
 {

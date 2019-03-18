@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 void generate_level_bloons(env_t *env, int max_bloons)
 {

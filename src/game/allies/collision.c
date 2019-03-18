@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 int check_collision(env_t *env, int bloons_id, int allies_id)
 {

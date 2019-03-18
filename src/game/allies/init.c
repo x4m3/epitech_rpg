@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 int create_allies(env_t *env, int type, sfVector2f pos)
 {

@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "my_defender.h"
+#include "my_rpg.h"
 
 void set_type_bloons(env_t *env, int bloons_id, int type)
 {

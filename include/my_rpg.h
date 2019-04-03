@@ -21,7 +21,8 @@ typedef struct s_character
     sfIntRect rect;
 }
 
-typedef enum s_pos {
+typedef enum pos
+{
     UP;
     DOWN;
     LEFT;

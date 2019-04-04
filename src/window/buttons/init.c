@@ -11,6 +11,7 @@
 int create_button(env_t *env, sfVector2f pos, char *texture, char *text)
 {
     int tmp = -1;
+    sfFloatRect bounds;
     if ((tmp = get_free_slot_buttons(env)) == -1)
         return (-1);
 
@@ -24,6 +25,8 @@ int create_button(env_t *env, sfVector2f pos, char *texture, char *text)
     sfSprite_setTexture(env->buttons_s[tmp].sprite,
         env->buttons_s[tmp].texture, sfTrue);
     sfSprite_setPosition(env->buttons_s[tmp].sprite, env->buttons_s[tmp].pos);
+    bounds = sfSprite_getGlobalBounds(env->buttons_s[tmp].sprite);
+    sfSprite_setOrigin(env->buttons_s[tmp].sprite, (sfVector2f) {bounds.width / 2, bounds.height / 2});
     return (tmp);
 }
 

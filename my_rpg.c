@@ -19,8 +19,8 @@ int main(void)
     env.core_s.actual_status = STATUS_MENU;
     //env.menu_s.actual_status = M_STATUS_MAIN;
 
-    int seed = (int) malloc(1);
-    srand((int) &seed);
+    int *seed = malloc(1);
+    srand(*seed);
 
     reset_var(&env);
     set_window(&env);

@@ -31,6 +31,10 @@
 
 #define MAX_BUTTONS         (50)
 
+#define BUTTON_HOWTO        ("assets/game_ui/btn/about.png")
+#define BUTTON_SETTINGS     ("assets/game_ui/btn/settings.png")
+#define BUTTON_PLAY         ("assets/game_ui/btn/play.png")
+
 struct core_s {
     char *project_name;
     sfVideoMode mode;

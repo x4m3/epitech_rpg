@@ -11,9 +11,12 @@
 void check_buttons(env_t *env)
 {
     int button_id = -1;
-    sfVector2f vector = {1.05, 1.05};
 
     if ((button_id = is_over_button(env)) != -1) {
+        sfVector2f vector = {
+            env->buttons_s[button_id].scale + 0.05,
+            env->buttons_s[button_id].scale + 0.05
+        };
         sfSprite_setScale(env->buttons_s[button_id].sprite, vector);
     }
     reset_effects(env, button_id);
@@ -25,6 +28,8 @@ void reset_effects(env_t *env, int exception)
         if (exception == i)
             continue;
 
-        sfSprite_setScale(env->buttons_s[i].sprite, (sfVector2f) {1.0, 1.0});
+        sfSprite_setScale(env->buttons_s[i].sprite, (sfVector2f) {
+            env->buttons_s[i].scale, env->buttons_s[i].scale
+        });
     }
 }

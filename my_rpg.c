@@ -25,10 +25,10 @@ int main(void)
     reset_var(&env);
 
     char *texture = "assets/game_ui/btn/about.png";
-    create_button(&env, (sfVector2f) {150, 200}, texture, "char");
-    create_button(&env, (sfVector2f) {500, 500}, texture, "coucou");
-    create_button(&env, (sfVector2f) {700, 900}, texture, "salut");
-    create_button(&env, (sfVector2f) {1000, 500}, texture, "baaaa");
+    create_button(&env, (sfVector3f) {150, 200, 1.0}, texture, "char");
+    create_button(&env, (sfVector3f) {500, 500, 1.0}, texture, "coucou");
+    create_button(&env, (sfVector3f) {700, 900, 2.0}, texture, "salut");
+    create_button(&env, (sfVector3f) {1000, 500, 1.0}, texture, "baaaa");
 
     printf("%d\n", get_button_by_text(&env, "char"));
     printf("%d\n", get_button_by_text(&env, "coucou"));

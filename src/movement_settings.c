@@ -15,5 +15,5 @@ pos_t get_input(void)
     (sfKeyboard_isKeyPressed(sfKeyDown) == sfTrue) ? (res = DOWN) : (0);
     (sfKeyboard_isKeyPressed(sfKeyLeft) == sfTrue) ? (res = LEFT) : (0);
     (sfKeyboard_isKeyPressed(sfKeyRight) == sfTrue) ? (res = RIGHT) : (0);
-    return (result);
+    return (res);
 }

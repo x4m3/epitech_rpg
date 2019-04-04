@@ -17,12 +17,24 @@ int main(void)
     env.core_s.mode = (sfVideoMode) {RESOLUTION_X, RESOLUTION_Y, BITS_PIXELS};
 
     env.core_s.actual_status = STATUS_MENU;
-    env.menu_s.actual_status = M_STATUS_MAIN;
+    //env.menu_s.actual_status = M_STATUS_MAIN;
 
     int seed = (int) malloc(1);
     srand((int) &seed);
 
     reset_var(&env);
+
+    char *texture = "assets/game_ui/btn/about.png";
+    create_button(&env, (sfVector2f) {150, 200}, texture, "char");
+    create_button(&env, (sfVector2f) {500, 500}, texture, "coucou");
+    create_button(&env, (sfVector2f) {700, 900}, texture, "salut");
+    create_button(&env, (sfVector2f) {1000, 500}, texture, "baaaa");
+
+    printf("%d\n", get_button_by_text(&env, "char"));
+    printf("%d\n", get_button_by_text(&env, "coucou"));
+    printf("%d\n", get_button_by_text(&env, "salut"));
+    printf("%d\n", get_button_by_text(&env, "baaaa"));
+    printf("%d\n", get_button_by_text(&env, "hre"));
     set_window(&env);
     game_state(&env);
     destroy(&env);

@@ -24,6 +24,10 @@ void game_menu(env_t *env)
     create_button(env, (sfVector2f) {1800, 150}, button_settings, "settings");
     char *button_play = "assets/game_ui/btn/play.png";
     create_button(env, (sfVector2f) {1900/2, 1050/2}, button_play, "play");
+    sfTexture *t_logo = sfTexture_createFromFile("assets/game_ui/menu/logo.png", NULL);
+    sfSprite *s_logo = sfSprite_create();
+    sfSprite_setTexture(s_logo, t_logo, sfTrue);
+    sfRenderWindow_drawSprite(env->core_s.window, s_logo, NULL);
     display_buttons(env);
     sfRenderWindow_display(env->core_s.window);
     menu_button_pressed(env);

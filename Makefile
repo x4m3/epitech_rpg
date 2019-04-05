@@ -12,6 +12,7 @@ INCLUDE :=	-I ./include/
 SRC :=		my_rpg.c\
 			src/menu/draw/buttons.c \
 			src/menu/events.c \
+			src/menu/setting.c\
 			src/menu/init.c\
 			src/window/buttons/animation.c\
 			src/window/buttons/display.c\

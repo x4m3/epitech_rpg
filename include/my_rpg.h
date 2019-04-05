@@ -54,11 +54,17 @@ struct buttons_s {
 
     char *text;
     sfVector2f pos;
+    float scale;
 
     sfTexture *texture;
     sfSprite *sprite;
 };
 typedef struct buttons_s buttons_t;
+
+struct menu_s {
+    int actual_status;
+};
+typedef struct menu_s menu_t;
 
 struct character_s
 {
@@ -72,6 +78,7 @@ typedef struct character_s character_t;
 
 struct env_s {
     core_t core_s;
+    menu_t menu_s;
     buttons_t buttons_s[MAX_BUTTONS];
     character_t character_s;
 };
@@ -104,7 +111,7 @@ int get_button_by_text(env_t *env, char *text);
 int get_free_slot_buttons(env_t *env);
 
 // src/window/buttons/init.c
-int create_button(env_t *env, sfVector2f pos, char *texture, char *text);
+int create_button(env_t *env, sfVector3f pos, char *texture, char *text);
 void destroy_button(env_t *env, int button_id);
 
 // src/window/events.c

@@ -8,12 +8,12 @@
 #include "my.h"
 #include "my_rpg.h"
 
-void on_menu_button_hitted(env_t *env)
+void on_menu_button_hitted(env_t *env, int button_id)
 {
-    if (get_button_by_text(env, "settings"))
+    if (get_button_by_text(env, "settings") == button_id)
         env->menu_s.actual_status = M_STATUS_SETTINGS;
-    if (get_button_by_text(env, "howto"))
+    if (get_button_by_text(env, "howto") == button_id)
         env->menu_s.actual_status = M_STATUS_HOWTO;
-    if (get_button_by_text(env, "play"))
+    if (get_button_by_text(env, "play") == button_id)
         env->core_s.actual_status = STATUS_PLAY;
 }

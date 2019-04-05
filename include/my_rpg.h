@@ -101,7 +101,7 @@ typedef enum pos
 void init_menu_ui(env_t *env);
 
 // src/menu/events.c
-void on_menu_button_hitted(env_t *env);
+void on_menu_button_hitted(env_t *env, int button_id);
 
 // src/menu/init.c
 void init_menu(env_t *env);

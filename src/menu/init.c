@@ -24,6 +24,7 @@ void init_menu(env_t *env)
 
 void game_menu_draw(env_t *env)
 {
+    printf("test\n");
     sfRenderWindow_clear(env->core_s.window, sfBlack);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_logo, NULL);
     display_buttons(env);

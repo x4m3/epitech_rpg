@@ -41,3 +41,9 @@ void destroy_button(env_t *env, int button_id)
 
     env->buttons_s[button_id].is_valid = false;
 }
+
+void destroy_all_buttons(env_t *env)
+{
+    for (int i = 0; i < MAX_BUTTONS; i++)
+        destroy_button(env, i);
+}

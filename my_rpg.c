@@ -16,13 +16,11 @@ int main(void)
     env.core_s.framerate = DEFAULT_FRAMERATE;
     env.core_s.mode = (sfVideoMode) {RESOLUTION_X, RESOLUTION_Y, BITS_PIXELS};
 
-    env.core_s.actual_status = STATUS_MENU;
-    //env.menu_s.actual_status = M_STATUS_MAIN;
-
     int *seed = malloc(1);
     srand(*seed);
 
     reset_var(&env);
+    init_menu(&env);
     set_window(&env);
     game_state(&env);
     destroy(&env);

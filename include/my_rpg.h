@@ -28,6 +28,8 @@
 #define STATUS_MENU         (0)
 #define M_STATUS_MAIN       (0)
 #define M_STATUS_SETTINGS   (1)
+#define M_STATUS_HOWTO      (2)
+#define STATUS_PLAY         (3)
 
 #define MAX_BUTTONS         (50)
 
@@ -63,6 +65,8 @@ typedef struct buttons_s buttons_t;
 
 struct menu_s {
     int actual_status;
+    sfTexture *t_logo;
+    sfSprite *s_logo;
 };
 typedef struct menu_s menu_t;
 
@@ -93,7 +97,15 @@ typedef enum pos
     OFF
 }pos_t;
 
+// src/menu/draw/buttons.c
+void init_menu_ui(env_t *env);
+
+// src/menu/events.c
+void on_menu_button_hitted(env_t *env);
+
 // src/menu/init.c
+void init_menu(env_t *env);
+void game_menu_draw(env_t *env);
 void game_menu(env_t *env);
 
 // src/window/buttons/animation.c
@@ -113,6 +125,7 @@ int get_free_slot_buttons(env_t *env);
 // src/window/buttons/init.c
 int create_button(env_t *env, sfVector3f pos, char *texture, char *text);
 void destroy_button(env_t *env, int button_id);
+void destroy_all_buttons(env_t *env);
 
 // src/window/events.c
 void events(env_t *env);

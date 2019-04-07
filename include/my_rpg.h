@@ -137,3 +137,7 @@ void game_state(env_t *env);
 void set_window(env_t *env);
 void destroy(env_t *env);
 void reset_var(env_t *env);
+
+// src/menu/setting.c
+void create_setting_button(env_t *env);
+void display_setting_menu(env_t *env);

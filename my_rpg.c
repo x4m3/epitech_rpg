@@ -22,6 +22,7 @@ int main(void)
     reset_var(&env);
     init_menu(&env);
     set_window(&env);
+    //display_setting_menu(&env);
     game_state(&env);
     destroy(&env);
     return (0);

@@ -10,6 +10,10 @@ NAME := 		my_rpg
 INCLUDE :=	-I ./include/
 
 SRC :=		my_rpg.c\
+			src/game/draw/game_ui.c\
+			src/game/events.c\
+			src/game/game.c\
+			src/game/init.c\
 			src/menu/draw/how_to.c\
 			src/menu/draw/menu_ui.c\
 			src/menu/draw/settings.c\

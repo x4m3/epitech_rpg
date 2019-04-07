@@ -15,8 +15,5 @@ void events(env_t *env)
             sfRenderWindow_close(env->core_s.window);
         
         check_buttons_click(env);
-
-        /*if (env->core_s.actual_status == STATUS_MENU)
-            menu_events(env);*/
     }
 }

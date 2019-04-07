@@ -15,5 +15,7 @@ void game_state(env_t *env)
         check_buttons(env);
         if (env->core_s.actual_status == STATUS_MENU)
             game_menu(env);
+        else if (env->core_s.actual_status == STATUS_PLAY)
+            game_play(env);
     }
 }

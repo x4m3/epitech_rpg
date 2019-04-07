@@ -27,7 +27,9 @@
 #define M_STATUS_MAIN       (0)
 #define M_STATUS_SETTINGS   (1)
 #define M_STATUS_HOWTO      (2)
+
 #define STATUS_PLAY         (3)
+#define G_STATUS_PLAY       (0)
 
 #define MAX_BUTTONS         (50)
 
@@ -86,6 +88,11 @@ struct buttons_s {
 };
 typedef struct buttons_s buttons_t;
 
+struct game_s {
+    int actual_status;
+};
+typedef struct game_s game_t;
+
 struct menu_s {
     int actual_status;
 
@@ -119,6 +126,7 @@ typedef struct character_s character_t;
 struct env_s {
     core_t core_s;
     menu_t menu_s;
+    game_t game_s;
     buttons_t buttons_s[MAX_BUTTONS];
     character_t character_s;
 };
@@ -132,6 +140,18 @@ typedef enum pos
     RIGHT,
     OFF
 }pos_t;
+
+// src/game/draw/game_ui.c
+void game_draw_ui(env_t *env);
+
+// src/game/events.c
+
+// src/game/game.c
+void init_game(env_t *env);
+void game_play_draw(env_t *env);
+
+// src/game/init.c
+void game_play(env_t *env);
 
 // src/menu/draw/how_to.c
 void draw_menu_howto(env_t *env);

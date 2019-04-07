@@ -10,17 +10,21 @@ NAME := 		my_rpg
 INCLUDE :=	-I ./include/
 
 SRC :=		my_rpg.c\
-			src/menu/draw/buttons.c \
-			src/menu/events.c \
-			src/menu/setting.c\
+			src/menu/draw/menu_ui.c\
+			src/menu/draw/settings.c\
+			src/menu/events.c\
 			src/menu/init.c\
+			src/menu/main.c\
+			src/menu/settings.c\
 			src/window/buttons/animation.c\
 			src/window/buttons/display.c\
 			src/window/buttons/event.c\
 			src/window/buttons/init.c\
 			src/window/events.c\
+			src/window/fonts.c\
 			src/window/game.c\
-			src/window/init.c
+			src/window/init.c\
+			src/window/sounds.c
 
 OBJ :=		$(SRC:.c=.o)
 

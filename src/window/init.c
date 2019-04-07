@@ -15,6 +15,8 @@ void set_window(env_t *env)
 
     sfRenderWindow_setFramerateLimit(env->core_s.window, env->core_s.framerate);
 
+    init_fonts(env);
+    init_sounds(env);
     init_menu(env);
 }
 

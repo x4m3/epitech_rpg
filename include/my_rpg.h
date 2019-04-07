@@ -33,9 +33,25 @@
 
 #define MAX_BUTTONS         (50)
 
+#define FONT_OETZ           ("assets/oetztype.ttf")
+
+#define MENU_LOGO           ("assets/game_ui/menu/logo.png")
+#define MENU_BACKGROUND     ("assets/background.png")
+
 #define BUTTON_HOWTO        ("assets/game_ui/btn/about.png")
 #define BUTTON_SETTINGS     ("assets/game_ui/btn/settings.png")
 #define BUTTON_PLAY         ("assets/game_ui/btn/play.png")
+#define BUTTON_ON           ("assets/game_ui/settings/96.png")
+#define BUTTON_OFF          ("assets/game_ui/settings/95.png")
+#define BUTTON_CLOSE        ("assets/game_ui/settings/close_2.png")
+#define BUTTON_EXIT         ("assets/game_ui/btn/close.png")
+
+#define M_SETTINGS_ICON     ("assets/game_ui/settings/92.png")
+#define M_SETTINGS_BOX0     ("assets/game_ui/settings/bg.png")
+#define M_SETTINGS_BOX1     ("assets/game_ui/settings/table.png")
+
+#define _SOUNDS_EFFECTS      (1)
+#define _SOUNDS_CLICK        ("assets/sounds/click.wav")
 
 struct core_s {
     char *project_name;
@@ -45,9 +61,16 @@ struct core_s {
     // Events
     sfEvent event;
 
+    // Settings
+    sfMusic *m_effects[_SOUNDS_EFFECTS];
+    sfMusic *m_music;
+
     // Utils
     int framerate;
     int actual_status;
+
+    // Fonts
+    sfFont *f_oetz;
 };
 typedef struct core_s core_t;
 
@@ -65,8 +88,21 @@ typedef struct buttons_s buttons_t;
 
 struct menu_s {
     int actual_status;
+
+    // Logo
     sfTexture *t_logo;
     sfSprite *s_logo;
+
+    // Background
+    sfTexture *t_background;
+    sfSprite *s_background;
+
+    // Settings
+    sfTexture *t_icon;
+    sfTexture *t_box[2];
+    sfSprite *s_icon;
+    sfSprite *s_box[2];
+    sfText *txt_sets[2];
 };
 typedef struct menu_s menu_t;
 
@@ -97,16 +133,25 @@ typedef enum pos
     OFF
 }pos_t;
 
-// src/menu/draw/buttons.c
+// src/menu/draw/menu_ui.c
 void init_menu_ui(env_t *env);
+
+// src/menu/draw/settings.c
+void draw_menu_settings(env_t *env);
 
 // src/menu/events.c
 void on_menu_button_hitted(env_t *env, int button_id);
 
 // src/menu/init.c
+void game_menu(env_t *env);
+
+// src/menu/main.c
 void init_menu(env_t *env);
 void game_menu_draw(env_t *env);
-void game_menu(env_t *env);
+
+// src/menu/settings.c
+void init_menu_settings(env_t *env);
+void game_menu_draw_settings(env_t *env);
 
 // src/window/buttons/animation.c
 void check_buttons(env_t *env);
@@ -130,6 +175,9 @@ void destroy_all_buttons(env_t *env);
 // src/window/events.c
 void events(env_t *env);
 
+// src/window/fonts.c
+void init_fonts(env_t *env);
+
 // src/window/game.c
 void game_state(env_t *env);
 
@@ -138,6 +186,9 @@ void set_window(env_t *env);
 void destroy(env_t *env);
 void reset_var(env_t *env);
 
-// src/menu/setting.c
-void create_setting_button(env_t *env);
-void display_setting_menu(env_t *env);
+// src/window/sounds.c
+void init_sounds(env_t *env);
+void set_sounds_music(env_t *env);
+void set_sounds_effects(env_t *env);
+float get_sounds_music(env_t *env);
+float get_sounds_effects(env_t *env);

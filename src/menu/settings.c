@@ -15,7 +15,6 @@ static void create_settings_buttons(env_t *env)
     else
         create_button(env, (sfVector3f) {1050, 450, 0.5}, BUTTON_OFF, "music");
 
-    printf("sounds: %0.2f\n", get_sounds_effects(env));
     if (get_sounds_effects(env) >= 100.0)
         create_button(env, (sfVector3f) {1050, 500, 0.5}, BUTTON_ON, "sound");
     else

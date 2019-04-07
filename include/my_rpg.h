@@ -16,14 +16,12 @@
 #define false               (0)
 #define bool                (int)
 
-#define PROJECT_NAME        ("My Defender")
+#define PROJECT_NAME        ("Wardo Shark")
 #define DEFAULT_FRAMERATE   (120)
 
 #define RESOLUTION_X        (1920)
 #define RESOLUTION_Y        (1080)
 #define BITS_PIXELS         (64)
-
-#define MENU_SETTINGS       ("assets/.../")
 
 #define STATUS_MENU         (0)
 #define M_STATUS_MAIN       (0)
@@ -49,6 +47,8 @@
 #define M_SETTINGS_ICON     ("assets/game_ui/settings/92.png")
 #define M_SETTINGS_BOX0     ("assets/game_ui/settings/bg.png")
 #define M_SETTINGS_BOX1     ("assets/game_ui/settings/table.png")
+
+#define M_HOWTO_ICON        ("assets/game_ui/how_to/icon.png")
 
 #define _SOUNDS_EFFECTS      (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
@@ -133,6 +133,9 @@ typedef enum pos
     OFF
 }pos_t;
 
+// src/menu/draw/how_to.c
+void draw_menu_howto(env_t *env);
+
 // src/menu/draw/menu_ui.c
 void init_menu_ui(env_t *env);
 
@@ -141,6 +144,10 @@ void draw_menu_settings(env_t *env);
 
 // src/menu/events.c
 void on_menu_button_hitted(env_t *env, int button_id);
+
+// src/menu/how_to.c
+void init_menu_howto(env_t *env);
+void game_menu_draw_howto(env_t *env);
 
 // src/menu/init.c
 void game_menu(env_t *env);

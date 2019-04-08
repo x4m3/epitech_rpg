@@ -48,7 +48,7 @@ lib:
 			make -C ./lib/my/ all
 
 $(NAME): 	lib $(OBJ)
-			gcc -o $(NAME) $(OBJ) $(CSFML) $(LIBMATH) $(LIB)
+			gcc -o $(NAME) $(OBJ) $(CSFML) $(LIB)
 
 
 clean:

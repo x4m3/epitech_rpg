@@ -8,6 +8,27 @@
 #include "my.h"
 #include "my_rpg.h"
 
+size_t read_from_file(void)
+{
+    int fd = open("data/how_to_play.txt", O_RDONLY);
+    char *line;
+
+    if (fd == -1)
+        return 1;
+    line = get_next_line(fd);
+    if (!line)
+        return 1;
+    while (line) {
+        printf("[%s]\n", line);
+        free(line);
+        line = get_next_line(fd);
+        if (!line)
+            return 1;
+    }
+    close(fd);
+    return 0;
+}
+
 void init_menu_howto(env_t *env)
 {
     env->core_s.actual_status = STATUS_MENU;
@@ -19,6 +40,8 @@ void init_menu_howto(env_t *env)
 
     init_menu_ui(env);
     draw_menu_howto(env);
+    if (read_from_file())
+        return;
 }
 
 void game_menu_draw_howto(env_t *env)

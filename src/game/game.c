@@ -18,8 +18,8 @@ void init_game(env_t *env)
 
 void game_display_map(env_t *env)
 {
-    for (int i = 0; env->game_s.map[i] != NULL; i++) {
-        for (int j = 0; env->game_s.map[i][j]; j++) {
+    for (int i = 0; env->game_s.s_map[i] != NULL; i++) {
+        for (int j = 0; env->game_s.s_map[i][j] != NULL; j++) {
             sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_map[i][j], NULL);
         }
     }

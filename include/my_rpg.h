@@ -33,11 +33,13 @@
 
 #define MAX_BUTTONS         (50)
 
-#define MAP_MAX_LINES         (200)
+#define MAP_MAX_LINES       (200)
 
 #define HELP_FILE           ("data/help.txt")
 
 #define FONT_OETZ           ("assets/oetztype.ttf")
+
+#define GAME_ASSETS_MAP     ("assets/64x64_map_tile.png")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
 #define MENU_BACKGROUND     ("assets/background.png")
@@ -97,7 +99,6 @@ struct game_s {
 
     sfTexture *t_map;
     sfSprite ***s_map;
-    char **map;
 };
 typedef struct game_s game_t;
 
@@ -164,7 +165,6 @@ void game_play(env_t *env);
 
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);
-void create_sprites_map(env_t *env, int index);
 
 // src/menu/draw/how_to.c
 void draw_menu_howto(env_t *env);

@@ -8,6 +8,60 @@
 #include "my.h"
 #include "my_rpg.h"
 
+static sfIntRect get_texture_map(char texture)
+{
+    switch (texture) {
+    case '1':
+        return ((sfIntRect) {148, 462, 64, 64});
+    case '2':
+        return ((sfIntRect) {214, 462, 64, 64});
+    case '3':
+        return ((sfIntRect) {280, 462, 64, 64});
+    case '4':
+        return ((sfIntRect) {610, 0, 64, 64});
+    case '5':
+        return ((sfIntRect) {676, 0, 64, 64});
+    case '6':
+        return ((sfIntRect) {742, 0, 64, 64});
+    case '7':
+        return ((sfIntRect) {610, 66, 64, 64});
+    case '8':
+        return ((sfIntRect) {676, 66, 64, 64});
+    case '9':
+        return ((sfIntRect) {742, 66, 64, 64});
+    case 'A':
+        return ((sfIntRect) {610, 132, 64, 64});
+    case 'B':
+        return ((sfIntRect) {676, 132, 64, 64});
+    case 'C':
+        return ((sfIntRect) {742, 132, 64, 64});
+    case 'D':
+        return ((sfIntRect) {148, 330, 64, 64});
+    case 'E':
+        return ((sfIntRect) {148, 396, 64, 64});
+    case 'F':
+        return ((sfIntRect) {214, 396, 64, 64});
+    case 'G':
+        return ((sfIntRect) {280, 396, 64, 64});
+    case 'H':
+        return ((sfIntRect) {280, 330, 64, 64});
+    }
+
+    return ((sfIntRect) {214, 66, 64, 64});
+}
+
+static void create_sprites_map(env_t *env, char *str, int index)
+{
+    int i = 0;
+    for (i = 0; str[i]; i++) {
+        env->game_s.s_map[index][i] = sfSprite_create();
+        sfSprite_setTexture(env->game_s.s_map[index][i], env->game_s.t_map, sfTrue);
+        sfSprite_setTextureRect(env->game_s.s_map[index][i], get_texture_map(str[i]));
+        sfSprite_setPosition(env->game_s.s_map[index][i], (sfVector2f) {i * 64, index * 64});
+    }
+    env->game_s.s_map[index][i] = NULL;
+}
+
 int open_map(env_t *env, int argc, char *argv[])
 {
     (void) argc;
@@ -20,35 +74,18 @@ int open_map(env_t *env, int argc, char *argv[])
         return (84);
     }
 
-    env->game_s.t_map = sfTexture_createFromFile("assets/test.png", NULL);
+    env->game_s.t_map = sfTexture_createFromFile(GAME_ASSETS_MAP, NULL);
 
-    if (!(env->game_s.map = malloc(sizeof(char *) * (MAP_MAX_LINES + 1))))
-        return (84);
     if (!(env->game_s.s_map = malloc(sizeof(sfSprite *) * (MAP_MAX_LINES + 1))))
         return (84);
 
     while ((str = get_next_line(fd))) {
-        printf("[%d] -> malloc size %d\n", tmp, (my_strlen(str) + 1));
-        printf("[%d] %s\n", tmp, str);
         if (!(env->game_s.s_map[tmp] = malloc(sizeof(sfSprite *) * (my_strlen(str) + 1))))
             return (84);
-        env->game_s.map[tmp] = my_strdup(str);
-        create_sprites_map(env, tmp);
+        create_sprites_map(env, str, tmp);
         tmp++;
         free(str);
     }
-    env->game_s.map[tmp] = NULL;
+    env->game_s.s_map[tmp] = NULL;
     return (0);
-}
-
-void create_sprites_map(env_t *env, int index)
-{
-    printf("[%d] strlen: %d\n", index, my_strlen(env->game_s.map[index]));
-    for (int i = 0; env->game_s.map[index][i] != '\0'; i++) {
-        printf("[%d][%d]: sprite created\n", index, i);
-
-        env->game_s.s_map[index][i] = sfSprite_create();
-        sfSprite_setTexture(env->game_s.s_map[index][i], env->game_s.t_map, sfTrue);
-        sfSprite_setPosition(env->game_s.s_map[index][i], (sfVector2f) {i * 33, index * 33});
-    }
 }

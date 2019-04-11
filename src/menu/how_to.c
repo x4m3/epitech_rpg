@@ -15,15 +15,11 @@ size_t read_from_file(void)
 
     if (fd == -1)
         return 1;
-    line = get_next_line(fd);
-    if (!line)
-        return 1;
-    while (line) {
-        printf("[%s]\n", line);
-        free(line);
-        line = get_next_line(fd);
+    while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
+        printf("[%s]\n", line);
+        free(line);
     }
     close(fd);
     return 0;

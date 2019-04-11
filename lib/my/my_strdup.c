@@ -9,10 +9,11 @@
 
 char *my_strdup(char const *src)
 {
-    char *new_src;
+    char *new_src = NULL;
 
-    new_src = malloc(sizeof(src));
+    if (!(new_src = malloc(sizeof(src))))
+        return (NULL);
+
     my_strcpy(new_src, src);
-
-    return new_src;
+    return (new_src);
 }

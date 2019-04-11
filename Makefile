@@ -14,6 +14,7 @@ SRC :=		my_rpg.c\
 			src/game/events.c\
 			src/game/game.c\
 			src/game/init.c\
+			src/map/init.c\
 			src/menu/draw/how_to.c\
 			src/menu/draw/menu_ui.c\
 			src/menu/draw/settings.c\
@@ -22,6 +23,7 @@ SRC :=		my_rpg.c\
 			src/menu/init.c\
 			src/menu/main.c\
 			src/menu/settings.c\
+			src/utils/help/display.c\
 			src/window/buttons/animation.c\
 			src/window/buttons/display.c\
 			src/window/buttons/event.c\

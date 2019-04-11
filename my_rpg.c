@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** My Defender
+** My RPG
 ** File description:
 ** Prototypes of all functions in the program
 */
@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
     env_t env;
 
@@ -19,10 +19,20 @@ int main(void)
     int *seed = malloc(1);
     srand(*seed);
 
+    if (argc < 2) {
+        display_help(argv);
+        return (84);
+    }
+    if (my_strcmp(argv[1], "--help") == 0 || my_strcmp(argv[1], "-h") == 0) {
+        display_help(argv);
+        return (0);
+    }
+    if (open_map(&env, argc, argv) == 84)
+        return (84);
+
     reset_var(&env);
     init_menu(&env);
     set_window(&env);
-    //display_setting_menu(&env);
     game_state(&env);
     destroy(&env);
     return (0);

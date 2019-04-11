@@ -1,0 +1,4 @@
+Parameters:
+    <MapPath>   Path redirect to valid .map file
+Informations:
+    Your map must contains only digitals numbers.

@@ -33,6 +33,10 @@
 
 #define MAX_BUTTONS         (50)
 
+#define MAP_MAX_LINES         (200)
+
+#define HELP_FILE           ("data/help.txt")
+
 #define FONT_OETZ           ("assets/oetztype.ttf")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
@@ -90,6 +94,10 @@ typedef struct buttons_s buttons_t;
 
 struct game_s {
     int actual_status;
+
+    sfTexture *t_map;
+    sfSprite ***s_map;
+    char **map;
 };
 typedef struct game_s game_t;
 
@@ -148,10 +156,15 @@ void game_draw_ui(env_t *env);
 
 // src/game/game.c
 void init_game(env_t *env);
+void game_display_map(env_t *env);
 void game_play_draw(env_t *env);
 
 // src/game/init.c
 void game_play(env_t *env);
+
+// src/map/init.c
+int open_map(env_t *env, int argc, char *argv[]);
+void create_sprites_map(env_t *env, int index);
 
 // src/menu/draw/how_to.c
 void draw_menu_howto(env_t *env);
@@ -179,6 +192,9 @@ void game_menu_draw(env_t *env);
 // src/menu/settings.c
 void init_menu_settings(env_t *env);
 void game_menu_draw_settings(env_t *env);
+
+// src/utils/help/display.c
+void display_help(char *argv[]);
 
 // src/window/buttons/animation.c
 void check_buttons(env_t *env);

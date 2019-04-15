@@ -8,7 +8,23 @@
 #include "my.h"
 #include "my_rpg.h"
 
-size_t read_from_file(void)
+static void draw_how_to_play(env_t *env, char *line)
+{
+    sfText *how_to_play = sfText_create();
+    sfFloatRect size_text = sfText_getGlobalBounds(how_to_play);
+    sfFloatRect size_max = sfSprite_getGlobalBounds(env->menu_s.s_icon);
+    
+    sfText_setString(how_to_play, line);
+    sfText_setFont(how_to_play, env->core_s.f_oetz);
+    sfText_setColor(how_to_play, (sfColor) {220, 220, 220, 255});
+    sfText_setOutlineColor(how_to_play, (sfColor) {49, 100, 12, 255});
+    sfText_setOutlineThickness(how_to_play, 2.0);
+    sfText_setPosition(how_to_play, (sfVector2f) {550, 300});
+    //if (size_text >= size_max)
+    sfRenderWindow_drawText(env->core_s.window, how_to_play, NULL);
+}
+
+size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);
     char *line;
@@ -19,6 +35,7 @@ size_t read_from_file(void)
         if (!line)
             return 1;
         printf("[%s]\n", line);
+        draw_how_to_play(env, line);
         free(line);
     }
     close(fd);
@@ -36,9 +53,10 @@ void init_menu_howto(env_t *env)
 
     init_menu_ui(env);
     draw_menu_howto(env);
-    if (read_from_file())
+    if (read_from_file(env))
         return;
 }
+
 
 void game_menu_draw_howto(env_t *env)
 {
@@ -49,7 +67,7 @@ void game_menu_draw_howto(env_t *env)
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[0], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_icon, NULL);
-
+    read_from_file(env);
     display_buttons(env);
 
     sfRenderWindow_display(env->core_s.window);

@@ -40,6 +40,7 @@
 #define FONT_OETZ           ("assets/oetztype.ttf")
 
 #define GAME_ASSETS_MAP     ("assets/64x64_map_tile.png")
+#define GAME_CHARACTER      ("assets/character_sprite.png")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
 #define MENU_BACKGROUND     ("assets/background.png")
@@ -57,6 +58,12 @@
 #define M_SETTINGS_BOX1     ("assets/game_ui/settings/table.png")
 
 #define M_HOWTO_ICON        ("assets/game_ui/how_to/icon.png")
+
+
+#define ROTATION_DOWN       (0)
+#define ROTATION_LEFT       (1)
+#define ROTATION_RIGHT      (2)
+#define ROTATION_UP         (3)
 
 #define _SOUNDS_EFFECTS      (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
@@ -79,6 +86,10 @@ struct core_s {
 
     // Fonts
     sfFont *f_oetz;
+
+    // Delta time
+    sfClock *clock;
+    float delta_time;
 };
 typedef struct core_s core_t;
 
@@ -97,6 +108,18 @@ typedef struct buttons_s buttons_t;
 struct game_s {
     int actual_status;
 
+    // Character
+    sfTexture *t_character;
+    sfSprite *s_character;
+    sfVector2f p_character;
+    int rotation;
+    int tmp_animation;
+
+    // View
+    sfView *view;
+    sfVector2f p_view;
+
+    // Map
     sfTexture *t_map;
     sfSprite ***s_map;
 };
@@ -150,14 +173,24 @@ typedef enum pos
     OFF
 }pos_t;
 
+// src/game/draw/character.c
+void game_draw_character(env_t *env);
+
 // src/game/draw/game_ui.c
 void game_draw_ui(env_t *env);
 
+// src/game/draw/view.c
+void game_draw_view(env_t *env);
+
+// src/game/character.c
+void set_character_rotation(env_t *env, int rotation);
+void set_character_animation(env_t *env);
+
 // src/game/events.c
+void game_events(env_t *env);
 
 // src/game/game.c
 void init_game(env_t *env);
-void game_display_map(env_t *env);
 void game_play_draw(env_t *env);
 
 // src/game/init.c

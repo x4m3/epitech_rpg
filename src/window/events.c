@@ -13,7 +13,10 @@ void events(env_t *env)
     while (sfRenderWindow_pollEvent(env->core_s.window, &env->core_s.event)) {
         if (env->core_s.event.type == sfEvtClosed)
             sfRenderWindow_close(env->core_s.window);
-        
+
+        if (env->core_s.actual_status == STATUS_PLAY)
+            game_events(env);
+
         check_buttons_click(env);
     }
 }

@@ -27,10 +27,9 @@ int main(int argc, char *argv[])
         display_help(argv);
         return (0);
     }
+    reset_var(&env);
     if (open_map(&env, argc, argv) == 84)
         return (84);
-
-    reset_var(&env);
     init_menu(&env);
     set_window(&env);
     game_state(&env);

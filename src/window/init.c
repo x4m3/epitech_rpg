@@ -27,6 +27,9 @@ void destroy(env_t *env)
 
 void reset_var(env_t *env)
 {
+    env->game_s.map_size.width = 0;
+    env->game_s.map_size.height = 0;
+
     for (int i = 0; i < MAX_BUTTONS; i++) {
         env->buttons_s[i].is_valid = false;
         destroy_button(env, i);

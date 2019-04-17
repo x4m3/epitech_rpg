@@ -62,6 +62,12 @@ static void create_sprites_map(env_t *env, char *str, int index)
     env->game_s.s_map[index][i] = NULL;
 }
 
+static void get_size_map(env_t *env, char *str)
+{
+    if ((int)env->game_s.map_size.width < my_strlen(str) * 64)
+        env->game_s.map_size.width = my_strlen(str) * 64;
+}
+
 int open_map(env_t *env, int argc, char *argv[])
 {
     (void) argc;
@@ -73,19 +79,18 @@ int open_map(env_t *env, int argc, char *argv[])
         send_error("Can't open the file.\n");
         return (84);
     }
-
     env->game_s.t_map = sfTexture_createFromFile(GAME_ASSETS_MAP, NULL);
-
     if (!(env->game_s.s_map = malloc(sizeof(sfSprite *) * (MAP_MAX_LINES + 1))))
         return (84);
-
     while ((str = get_next_line(fd))) {
         if (!(env->game_s.s_map[tmp] = malloc(sizeof(sfSprite *) * (my_strlen(str) + 1))))
             return (84);
+        get_size_map(env, str);
         create_sprites_map(env, str, tmp);
         tmp++;
         free(str);
     }
     env->game_s.s_map[tmp] = NULL;
+    env->game_s.map_size.height = tmp * 64;
     return (0);
 }

@@ -17,7 +17,7 @@
 #define bool                (int)
 
 #define PROJECT_NAME        ("Wardo Shark")
-#define DEFAULT_FRAMERATE   (120)
+#define DEFAULT_FRAMERATE   (100)
 
 #define RESOLUTION_X        (1920)
 #define RESOLUTION_Y        (1080)
@@ -122,6 +122,7 @@ struct game_s {
     // Map
     sfTexture *t_map;
     sfSprite ***s_map;
+    sfVideoMode map_size;
 };
 typedef struct game_s game_t;
 

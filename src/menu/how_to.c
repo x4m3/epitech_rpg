@@ -13,7 +13,7 @@ static void draw_how_to_play(env_t *env, char *line, double i)
     sfText *how_to_play = sfText_create();
     sfFloatRect size_text = sfText_getGlobalBounds(how_to_play);
     sfFloatRect size_max = sfSprite_getGlobalBounds(env->menu_s.s_icon);
-    
+
     sfText_setString(how_to_play, line);
     sfText_setFont(how_to_play, env->core_s.f_oetz);
     sfText_setColor(how_to_play, (sfColor) {220, 220, 220, 255});
@@ -35,7 +35,7 @@ size_t read_from_file(env_t *env)
     while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
-        printf("[%s]\n", line); 
+        printf("[%s]\n", line);
         draw_how_to_play(env, line, i);
         free(line);
         i += 60;

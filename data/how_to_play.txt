@@ -1,5 +1,4 @@
 Welcome to the "How to play" section of the game.
-
 Here are the instructions to play the game:
 
 'up' to jump

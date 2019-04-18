@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static void draw_how_to_play(env_t *env, char *line)
+static void draw_how_to_play(env_t *env, char *line, double i)
 {
     sfText *how_to_play = sfText_create();
     sfFloatRect size_text = sfText_getGlobalBounds(how_to_play);
@@ -19,7 +19,7 @@ static void draw_how_to_play(env_t *env, char *line)
     sfText_setColor(how_to_play, (sfColor) {220, 220, 220, 255});
     sfText_setOutlineColor(how_to_play, (sfColor) {49, 100, 12, 255});
     sfText_setOutlineThickness(how_to_play, 2.0);
-    sfText_setPosition(how_to_play, (sfVector2f) {550, 300});
+    sfText_setPosition(how_to_play, (sfVector2f) {550, 300 + i});
     //if (size_text >= size_max)
     sfRenderWindow_drawText(env->core_s.window, how_to_play, NULL);
 }
@@ -28,15 +28,17 @@ size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);
     char *line;
+    double i = 0;
 
     if (fd == -1)
         return 1;
     while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
-        printf("[%s]\n", line);
-        draw_how_to_play(env, line);
+        printf("[%s]\n", line); 
+        draw_how_to_play(env, line, i);
         free(line);
+        i += 60;
     }
     close(fd);
     return 0;

@@ -1,0 +1,9 @@
+Welcome to the "How to play" section of the game.
+Here are the instructions to play the game:
+
+'up' to jump
+'down' to crouch
+'left' to go left
+'right' to go right
+
+Good luck!

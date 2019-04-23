@@ -187,6 +187,9 @@ void game_draw_view(env_t *env);
 void set_character_rotation(env_t *env, int rotation);
 void set_character_animation(env_t *env);
 
+// src/game/collision.c
+int check_collision(env_t *env, sfVector2i move);
+
 // src/game/events.c
 void game_events(env_t *env);
 
@@ -196,6 +199,12 @@ void game_play_draw(env_t *env);
 
 // src/game/init.c
 void game_play(env_t *env);
+
+// src/game/move.c
+void char_movement_right(env_t *env);
+void char_movement_left(env_t *env);
+void char_movement_top(env_t *env);
+void char_movement_down(env_t *env);
 
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);

@@ -17,7 +17,7 @@
 #define bool                (int)
 
 #define PROJECT_NAME        ("Wardo Shark")
-#define DEFAULT_FRAMERATE   (100)
+#define DEFAULT_FRAMERATE   (250)
 
 #define RESOLUTION_X        (1920)
 #define RESOLUTION_Y        (1080)
@@ -32,6 +32,7 @@
 #define G_STATUS_PLAY       (0)
 
 #define MAX_BUTTONS         (50)
+#define MAX_HOUSES          (50)
 
 #define MAP_MAX_LINES       (200)
 
@@ -39,7 +40,7 @@
 
 #define FONT_OETZ           ("assets/oetztype.ttf")
 
-#define GAME_ASSETS_MAP     ("assets/64x64_map_tile.png")
+#define GAME_ASSETS_MAP     ("assets/64x64_map_tile_2.png")
 #define GAME_CHARACTER      ("assets/character_sprite.png")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
@@ -156,11 +157,21 @@ struct character_s
 };
 typedef struct character_s character_t;
 
+struct houses_s {
+    int is_valid;
+
+    sfVector2f pos;
+
+    sfSprite *sprite;
+};
+typedef struct houses_s houses_t;
+
 struct env_s {
     core_t core_s;
     menu_t menu_s;
     game_t game_s;
     buttons_t buttons_s[MAX_BUTTONS];
+    houses_t houses_s[MAX_HOUSES];
     character_t character_s;
 };
 typedef struct env_s env_t;
@@ -182,6 +193,13 @@ void game_draw_ui(env_t *env);
 
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
+
+// src/game/houses/display.c
+void display_houses(env_t *env);
+
+// src/game/houses/init.c
+void create_house(env_t *env, houses_t tmp_house);
+void delete_house(env_t *env, int house_id);
 
 // src/game/character.c
 void set_character_rotation(env_t *env, int rotation);

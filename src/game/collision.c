@@ -27,8 +27,24 @@ static int get_collision_texture(sfIntRect rect)
     return (0);
 }
 
+static int check_house_collision(env_t *env, sfVector2i move)
+{
+    sfVector2i pos = {
+        (env->game_s.p_character.x + move.x),
+        (env->game_s.p_character.y + move.y)
+    };
+
+    for (int i = 0; i < MAX_HOUSES; i++) if (env->houses_s[i].is_valid) {
+        sfFloatRect bounds = sfSprite_getGlobalBounds(env->houses_s[i].sprite);
+        if (sfFloatRect_contains(&bounds, pos.x, pos.y))
+            return (i);
+    }
+    return (-1);
+}
+
 int check_collision(env_t *env, sfVector2i move)
 {
+    int house_id = -1;
     sfVector2i pos = {
         (env->game_s.p_character.x + move.x) / 64,
         (env->game_s.p_character.y + move.y) / 64
@@ -37,5 +53,9 @@ int check_collision(env_t *env, sfVector2i move)
 
     if (get_collision_texture(rect))
         return (1);
+    if ((house_id = check_house_collision(env, move)) != -1) {
+        printf("Enter in collision with house ID: %d\n", house_id);
+        return (1);
+    }
     return (0);
 }

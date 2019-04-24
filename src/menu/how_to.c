@@ -11,8 +11,6 @@
 static void draw_how_to_play(env_t *env, char *line, double i)
 {
     sfText *how_to_play = sfText_create();
-    sfFloatRect size_text = sfText_getGlobalBounds(how_to_play);
-    sfFloatRect size_max = sfSprite_getGlobalBounds(env->menu_s.s_icon);
 
     sfText_setString(how_to_play, line);
     sfText_setFont(how_to_play, env->core_s.f_oetz);
@@ -20,7 +18,6 @@ static void draw_how_to_play(env_t *env, char *line, double i)
     sfText_setOutlineColor(how_to_play, (sfColor) {49, 100, 12, 255});
     sfText_setOutlineThickness(how_to_play, 2.0);
     sfText_setPosition(how_to_play, (sfVector2f) {550, 300 + i});
-    //if (size_text >= size_max)
     sfRenderWindow_drawText(env->core_s.window, how_to_play, NULL);
 }
 
@@ -35,7 +32,6 @@ size_t read_from_file(env_t *env)
     while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
-        printf("[%s]\n", line);
         draw_how_to_play(env, line, i);
         free(line);
         i += 60;

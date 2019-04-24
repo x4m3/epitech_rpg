@@ -50,9 +50,19 @@ static sfIntRect get_texture_map(char texture)
     return ((sfIntRect) {214, 66, 64, 64});
 }
 
-static void create_sprites_map(env_t *env, char *str, int index)
+static void get_size_map(env_t *env, char *str)
+{
+    if ((int)env->game_s.map_size.width < my_strlen(str) * 64)
+        env->game_s.map_size.width = my_strlen(str) * 64;
+}
+
+static int create_sprites_map(env_t *env, char *str, int index)
 {
     int i = 0;
+
+    if (!(env->game_s.s_map[index] = malloc(sizeof(sfSprite *) * (my_strlen(str) + 1))))
+        return (84);
+    get_size_map(env, str);
     for (i = 0; str[i]; i++) {
         env->game_s.s_map[index][i] = sfSprite_create();
         sfSprite_setTexture(env->game_s.s_map[index][i], env->game_s.t_map, sfTrue);
@@ -60,12 +70,21 @@ static void create_sprites_map(env_t *env, char *str, int index)
         sfSprite_setPosition(env->game_s.s_map[index][i], (sfVector2f) {i * 64, index * 64});
     }
     env->game_s.s_map[index][i] = NULL;
+    env->game_s.s_map[index + 1] = NULL;
+    env->game_s.map_size.height = (index + 1) * 64;
+    return (0);
 }
 
-static void get_size_map(env_t *env, char *str)
+static void create_house_map(env_t *env, char *str, int index)
 {
-    if ((int)env->game_s.map_size.width < my_strlen(str) * 64)
-        env->game_s.map_size.width = my_strlen(str) * 64;
+    (void) index;
+    char **data = my_str_to_word_array(str);
+    houses_t tmp_house;
+
+    tmp_house.pos.x = (float) my_getnbr(data[0]);
+    tmp_house.pos.y = (float) my_getnbr(data[1]);
+
+    create_house(env, tmp_house);
 }
 
 int open_map(env_t *env, int argc, char *argv[])
@@ -74,6 +93,7 @@ int open_map(env_t *env, int argc, char *argv[])
     int fd = -1;
     char *str = NULL;
     int tmp = 0;
+    int status = 0;
 
     if ((fd = open(argv[1], O_RDONLY)) == -1) {
         send_error("Can't open the file.\n");
@@ -83,14 +103,17 @@ int open_map(env_t *env, int argc, char *argv[])
     if (!(env->game_s.s_map = malloc(sizeof(sfSprite *) * (MAP_MAX_LINES + 1))))
         return (84);
     while ((str = get_next_line(fd))) {
-        if (!(env->game_s.s_map[tmp] = malloc(sizeof(sfSprite *) * (my_strlen(str) + 1))))
-            return (84);
-        get_size_map(env, str);
-        create_sprites_map(env, str, tmp);
+        if (str[0] == '#') {
+            status++;
+            tmp = 0;
+            continue;
+        }
+        if (status == 1)
+            create_sprites_map(env, str, tmp);
+        if (status == 2)
+            create_house_map(env, str, tmp);
         tmp++;
         free(str);
     }
-    env->game_s.s_map[tmp] = NULL;
-    env->game_s.map_size.height = tmp * 64;
     return (0);
 }

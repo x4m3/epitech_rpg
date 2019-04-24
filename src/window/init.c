@@ -34,4 +34,8 @@ void reset_var(env_t *env)
         env->buttons_s[i].is_valid = false;
         destroy_button(env, i);
     }
+
+    for (int i = 0; i < MAX_HOUSES; i++) {
+        env->houses_s[i].is_valid = false;
+    }
 }

@@ -13,6 +13,8 @@ SRC :=		my_rpg.c\
 			src/game/draw/character.c\
 			src/game/draw/game_ui.c\
 			src/game/draw/view.c\
+			src/game/houses/display.c\
+			src/game/houses/init.c\
 			src/game/character.c\
 			src/game/collision.c\
 			src/game/events.c\

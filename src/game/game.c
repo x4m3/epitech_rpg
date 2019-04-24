@@ -38,6 +38,7 @@ void game_play_draw(env_t *env)
     sfRenderWindow_clear(env->core_s.window, sfBlack);
 
     game_display_map(env);
+    display_houses(env);
     game_display_character(env);
     display_buttons(env);
 

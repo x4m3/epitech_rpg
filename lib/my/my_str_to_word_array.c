@@ -23,7 +23,7 @@ int count_word(char const *str)
 
 char** arr_alloc(size_t x, size_t y)
 {
-    char** pp = malloc(sizeof(*pp) * x);
+    char** pp = malloc(sizeof(*pp) * (x + 1));
 
     for (size_t i = 0; i < x; i++) {
         pp[i] = malloc(sizeof(**pp) * y);
@@ -39,12 +39,16 @@ char **my_str_to_word_array(char const *str)
     final_string = arr_alloc(count_word(str), 50);
 
     for (int i = 0; i < my_strlen(str); i++) {
-        final_string[k][tmp] = str[i];
-        tmp++;
         if (str[i] == ' ') {
+            final_string[k][tmp] = '\0';
             k++;
             tmp = 0;
+            continue;
         }
+        final_string[k][tmp] = str[i];
+        tmp++;
     }
+    final_string[k][tmp] = '\0';
+    final_string[k + 1] = NULL;
     return (final_string);
 }

@@ -25,7 +25,6 @@ void on_button_hitted(env_t *env, int button_id)
     printf("button_id: %d is hitted\n", button_id);
     sfMusic_stop(env->core_s.m_effects[0]);
     sfMusic_play(env->core_s.m_effects[0]);
-    printf("playing sound\n");
 }
 
 int is_over_button(env_t *env)

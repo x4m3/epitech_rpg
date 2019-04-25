@@ -42,6 +42,7 @@
 
 #define GAME_ASSETS_MAP     ("assets/64x64_map_tile_2.png")
 #define GAME_CHARACTER      ("assets/character_sprite.png")
+#define GAME_INVENTORY      ("assets/inventory_ui.png")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
 #define MENU_BACKGROUND     ("assets/background.png")
@@ -66,8 +67,18 @@
 #define ROTATION_RIGHT      (2)
 #define ROTATION_UP         (3)
 
-#define _SOUNDS_EFFECTS      (1)
+#define _SOUNDS_EFFECTS     (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
+
+#define MAX_TYPE_ITEMS      (2)
+#define MAX_ITEMS_USER      (8)
+struct inventory_type_t {
+    int item_id;
+    char const* item_name;
+    char const* item_texture;
+};
+
+extern struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS];
 
 struct core_s {
     char *project_name;
@@ -115,6 +126,12 @@ struct game_s {
     sfVector2f p_character;
     int rotation;
     int tmp_animation;
+
+    // Inventory
+    int inventory_open;
+    int inventory[MAX_ITEMS_USER];
+    sfTexture *t_inventory;
+    sfSprite *s_inventory;
 
     // View
     sfView *view;
@@ -191,6 +208,9 @@ void game_draw_character(env_t *env);
 // src/game/draw/game_ui.c
 void game_draw_ui(env_t *env);
 
+// src/game/draw/inventory.c
+void game_draw_inventory(env_t *env);
+
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
 
@@ -217,6 +237,9 @@ void game_play_draw(env_t *env);
 
 // src/game/init.c
 void game_play(env_t *env);
+
+// src/game/inventory.c
+int get_item_by_name(char *name);
 
 // src/game/move.c
 void char_movement_right(env_t *env);

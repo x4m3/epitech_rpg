@@ -28,9 +28,15 @@ void init_game(env_t *env)
     env->core_s.actual_status = STATUS_PLAY;
     env->game_s.actual_status = G_STATUS_PLAY;
 
+    env->game_s.inventory_open = false;
+
+    for (int i = 0; i < MAX_ITEMS_USER; i++)
+        env->game_s.inventory[i] = -1;
+
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);
+    game_draw_inventory(env);
 }
 
 void game_play_draw(env_t *env)
@@ -41,6 +47,9 @@ void game_play_draw(env_t *env)
     display_houses(env);
     game_display_character(env);
     display_buttons(env);
+
+    if (env->game_s.inventory_open)
+        sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_inventory, NULL);
 
     sfRenderWindow_setView(env->core_s.window, env->game_s.view);
     sfRenderWindow_display(env->core_s.window);

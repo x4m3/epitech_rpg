@@ -12,6 +12,7 @@ INCLUDE :=	-I ./include/
 SRC :=		my_rpg.c\
 			src/game/draw/character.c\
 			src/game/draw/game_ui.c\
+			src/game/draw/inventory.c\
 			src/game/draw/view.c\
 			src/game/houses/display.c\
 			src/game/houses/init.c\
@@ -20,6 +21,7 @@ SRC :=		my_rpg.c\
 			src/game/events.c\
 			src/game/game.c\
 			src/game/init.c\
+			src/game/inventory.c\
 			src/game/move.c\
 			src/map/init.c\
 			src/menu/draw/how_to.c\

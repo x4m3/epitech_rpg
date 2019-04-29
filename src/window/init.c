@@ -38,4 +38,7 @@ void reset_var(env_t *env)
     for (int i = 0; i < MAX_HOUSES; i++) {
         env->houses_s[i].is_valid = false;
     }
+    for (int i = 0; i < MAX_ENNEMIES; i++) {
+        env->ennemies_s[i].is_valid = false;
+    }
 }

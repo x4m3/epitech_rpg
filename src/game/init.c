@@ -10,5 +10,6 @@
 
 void game_play(env_t *env)
 {
+    move_ennemies(env);
     game_play_draw(env);
 }

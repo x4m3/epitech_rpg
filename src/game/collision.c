@@ -55,6 +55,7 @@ int check_collision(env_t *env, sfVector2i move)
         return (1);
     if ((house_id = check_house_collision(env, move)) != -1) {
         printf("Enter in collision with house ID: %d\n", house_id);
+        create_ennemies(env, env->houses_s[house_id].pos, 1);
         return (1);
     }
     return (0);

@@ -33,6 +33,7 @@
 
 #define MAX_BUTTONS         (50)
 #define MAX_HOUSES          (50)
+#define MAX_ENNEMIES        (100)
 
 #define MAP_MAX_LINES       (200)
 
@@ -195,12 +196,25 @@ struct houses_s {
 };
 typedef struct houses_s houses_t;
 
+struct ennemies_s {
+    int is_valid;
+    float health;
+
+    int rotation;
+    int tmp_animation;
+
+    sfVector2f pos;
+    sfSprite *s_ennemies;
+};
+typedef struct ennemies_s ennemies_t;
+
 struct env_s {
     core_t core_s;
     menu_t menu_s;
     game_t game_s;
     buttons_t buttons_s[MAX_BUTTONS];
     houses_t houses_s[MAX_HOUSES];
+    ennemies_t ennemies_s[MAX_ENNEMIES];
     character_t character_s;
 };
 typedef struct env_s env_t;
@@ -225,6 +239,15 @@ void game_draw_inventory(env_t *env);
 
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
+
+// src/game/ennemies/init.c
+void create_ennemies(env_t *env, sfVector2f pos, int type);
+void delete_enemmies(env_t *env, int ennemies_id);
+size_t count_ennemies(env_t *env);
+void display_ennemies(env_t *env);
+
+// src/game/ennemies/move.c
+void move_ennemies(env_t *env);
 
 // src/game/houses/display.c
 void display_houses(env_t *env);

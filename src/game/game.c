@@ -47,6 +47,7 @@ void game_play_draw(env_t *env)
 
     game_display_map(env);
     display_houses(env);
+    display_ennemies(env);
     game_display_character(env);
     display_buttons(env);
 

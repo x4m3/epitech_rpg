@@ -43,6 +43,7 @@
 #define GAME_ASSETS_MAP     ("assets/64x64_map_tile_2.png")
 #define GAME_CHARACTER      ("assets/character_sprite.png")
 #define GAME_INVENTORY      ("assets/inventory_ui.png")
+#define GAME_MESSAGE        ("assets/game_ui/clouds/5.png")
 
 #define MENU_LOGO           ("assets/game_ui/menu/logo.png")
 #define MENU_BACKGROUND     ("assets/background.png")
@@ -72,10 +73,14 @@
 
 #define MAX_TYPE_ITEMS      (2)
 #define MAX_ITEMS_USER      (8)
+
+
 struct inventory_type_t {
     int item_id;
     char const* item_name;
     char const* item_texture;
+
+    sfTexture *t_item;
 };
 
 extern struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS];
@@ -126,6 +131,12 @@ struct game_s {
     sfVector2f p_character;
     int rotation;
     int tmp_animation;
+
+    // Messages
+    char *tmp_message;
+    sfTexture *t_message;
+    sfSprite *s_message;
+    sfText *txt_message;
 
     // Inventory
     int inventory_open;
@@ -240,6 +251,14 @@ void game_play(env_t *env);
 
 // src/game/inventory.c
 int get_item_by_name(char *name);
+void game_display_inventory(env_t *env);
+int add_item_user(env_t *env, char *item_name);
+void init_textures_inventory(void);
+
+// src/game/message.c
+void init_message(env_t *env);
+void set_message(env_t *env, char *text);
+void display_message(env_t *env);
 
 // src/game/move.c
 void char_movement_right(env_t *env);

@@ -30,13 +30,18 @@ void init_game(env_t *env)
 
     env->game_s.inventory_open = false;
 
+    init_textures_inventory();
     for (int i = 0; i < MAX_ITEMS_USER; i++)
         env->game_s.inventory[i] = -1;
+
+    add_item_user(env, "Backpack");
+    add_item_user(env, "Key");
 
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);
     game_draw_inventory(env);
+    init_message(env);
 }
 
 void game_play_draw(env_t *env)
@@ -49,7 +54,9 @@ void game_play_draw(env_t *env)
     display_buttons(env);
 
     if (env->game_s.inventory_open)
-        sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_inventory, NULL);
+        game_display_inventory(env);
+
+    display_message(env);
 
     sfRenderWindow_setView(env->core_s.window, env->game_s.view);
     sfRenderWindow_display(env->core_s.window);

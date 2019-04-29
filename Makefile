@@ -22,6 +22,7 @@ SRC :=		my_rpg.c\
 			src/game/game.c\
 			src/game/init.c\
 			src/game/inventory.c\
+			src/game/message.c\
 			src/game/move.c\
 			src/map/init.c\
 			src/menu/draw/how_to.c\

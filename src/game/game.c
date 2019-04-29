@@ -34,9 +34,6 @@ void init_game(env_t *env)
     for (int i = 0; i < MAX_ITEMS_USER; i++)
         env->game_s.inventory[i] = -1;
 
-    add_item_user(env, "Backpack");
-    add_item_user(env, "Key");
-
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);

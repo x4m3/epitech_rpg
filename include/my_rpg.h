@@ -70,6 +70,7 @@
 
 #define _SOUNDS_EFFECTS     (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
+#define _MUSIC_BACKGROUND    ("assets/sounds/background.ogg")
 
 #define MAX_TYPE_ITEMS      (2)
 #define MAX_ITEMS_USER      (8)

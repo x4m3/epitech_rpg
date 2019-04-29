@@ -8,33 +8,23 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static void draw_how_to_play(env_t *env, char *line, double i)
-{
-    sfText *how_to_play = sfText_create();
-
-    sfText_setString(how_to_play, line);
-    sfText_setFont(how_to_play, env->core_s.f_oetz);
-    sfText_setColor(how_to_play, (sfColor) {220, 220, 220, 255});
-    sfText_setOutlineColor(how_to_play, (sfColor) {49, 100, 12, 255});
-    sfText_setOutlineThickness(how_to_play, 2.0);
-    sfText_setPosition(how_to_play, (sfVector2f) {550, 300 + i});
-    sfRenderWindow_drawText(env->core_s.window, how_to_play, NULL);
-}
-
 size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);
     char *line;
-    double i = 0;
+    size_t i = 0;
 
+    env->menu_s.s_how_to = malloc(sizeof(char) * MAX_LINE_HOW_TO + 1);
+    if (env->menu_s.s_how_to == NULL)
+        return 1;
     if (fd == -1)
         return 1;
     while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
-        draw_how_to_play(env, line, i);
+        env->menu_s.s_how_to[i] = my_strdup(line);
         free(line);
-        i += 60;
+        i++;
     }
     close(fd);
     return 0;
@@ -50,7 +40,7 @@ void init_menu_howto(env_t *env)
     create_button(env, (sfVector3f) {1420, 170, 0.5}, BUTTON_CLOSE, "close");
 
     init_menu_ui(env);
-    draw_menu_howto(env);
+    //draw_menu_howto(env);
     if (read_from_file(env))
         return;
 }
@@ -65,7 +55,8 @@ void game_menu_draw_howto(env_t *env)
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[0], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_icon, NULL);
-    read_from_file(env);
+    //sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[0], NULL);
+    //draw_menu_howto(env);   
     display_buttons(env);
 
     sfRenderWindow_display(env->core_s.window);

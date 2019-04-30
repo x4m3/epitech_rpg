@@ -29,6 +29,8 @@ void init_game(env_t *env)
     env->game_s.actual_status = G_STATUS_PLAY;
 
     env->game_s.inventory_open = false;
+    env->game_s.house_id = 0;
+    env->game_s.count_kill = 0;
 
     init_textures_inventory();
     for (int i = 0; i < MAX_ITEMS_USER; i++)

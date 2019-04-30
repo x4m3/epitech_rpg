@@ -134,6 +134,10 @@ struct game_s {
     int rotation;
     int tmp_animation;
 
+    // GamePlay
+    int house_id;
+    int count_kill;
+
     // Messages
     char *tmp_message;
     sfTexture *t_message;

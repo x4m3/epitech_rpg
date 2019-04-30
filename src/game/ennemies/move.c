@@ -15,8 +15,10 @@ void set_ennemies_rotation(env_t *env, int ennemies_id, int rotation)
     if (env->ennemies_s[ennemies_id].rotation == rotation)
         return;
 
+    printf("Rotation: %d | env: %d\n", rotation, env->ennemies_s[ennemies_id].rotation);
+
     sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies, (sfIntRect) {
-        env->ennemies_s[ennemies_id].tmp_animation * 32, rotation * 32, 32, 32
+        env->ennemies_s[ennemies_id].tmp_animation * 32, 0, 32, 32
     });
     env->ennemies_s[ennemies_id].rotation = rotation;
 }
@@ -32,7 +34,7 @@ void set_ennemies_animation(env_t *env, int ennemies_id)
             env->ennemies_s[ennemies_id].tmp_animation++;
 
         sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies, (sfIntRect) {
-            env->ennemies_s[ennemies_id].tmp_animation * 32, env->ennemies_s[ennemies_id].rotation * 32, 32, 32
+            env->ennemies_s[ennemies_id].tmp_animation * 32, 0, 32, 32
         });
     }
 }
@@ -44,9 +46,8 @@ void move_ennemies(env_t *env)
     for (int i = 0; i < MAX_ENNEMIES; i++) {
         if (!env->ennemies_s[i].is_valid)
             continue;
-        if (env->ennemies_s[i].pos.x > go_to.x) {
+        if (env->ennemies_s[i].pos.x > go_to.x)
             ennemies_movement_left(env, i);
-        }
         else if (env->ennemies_s[i].pos.x < go_to.x)
             ennemies_movement_right(env, i);
         if (env->ennemies_s[i].pos.y > go_to.y)

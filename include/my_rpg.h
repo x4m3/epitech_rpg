@@ -88,7 +88,7 @@ struct inventory_type_t {
 
 extern struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS];
 
-#define MAX_LINE_HOW_TO     (8)
+#define MAX_LINE_HOW_TO     (50)
 
 struct core_s {
     char *project_name;

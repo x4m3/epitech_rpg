@@ -43,28 +43,22 @@ void draw_how_to_play(env_t *env)
 {
     size_t i = 0;
     
-    for(i = 0; i < MAX_LINE_HOW_TO; i++) {
+    for(i = 0; env->menu_s.s_how_to[i] != NULL; i++) {
         printf("%ld\n", i);
         env->menu_s.t_how_to[i] = sfText_create();
-       printf("AAAAAAAA%ld\n", i);
-        sfText_setString(env->menu_s.t_how_to[i], env->menu_s.s_how_to[i]);
-        printf("ZZZZZZZZZZ%ld\n", i);
         sfText_setFont(env->menu_s.t_how_to[i], env->core_s.f_oetz);
-        printf("EEEEEEEEEEEEE%ld\n", i);
         sfText_setColor(env->menu_s.t_how_to[i], (sfColor) {220, 220, 220, 255});
-        printf("RRRRRRRRRRRRRRRR%ld\n", i);
         sfText_setOutlineColor(env->menu_s.t_how_to[i], (sfColor) {49, 100, 12, 255});
-        printf("TTTTTTTTTTTTTTTTT%ld\n", i);
         sfText_setOutlineThickness(env->menu_s.t_how_to[i], 2.0);
-        printf("IIIIIIIIIIIIIIIIIII%ld\n", i);
+        sfText_setString(env->menu_s.t_how_to[i], env->menu_s.s_how_to[i]);
         sfText_setPosition(env->menu_s.t_how_to[i], (sfVector2f) {550, 310 + (i * 60)});
     }
     printf("%ld\n", i);
-    env->menu_s.s_how_to[i] = NULL;
 }
 
 void draw_menu_howto(env_t *env)
 {
+    draw_how_to_play(env);
     draw_box(env);
     draw_icons(env);
 }

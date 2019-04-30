@@ -12,6 +12,8 @@ void init_message(env_t *env)
 {
     env->game_s.tmp_message = NULL;
 
+    env->game_s.timer_message = sfClock_create();
+    sfClock_restart(env->game_s.timer_message);
 
     env->game_s.txt_message = sfText_create();
     env->game_s.t_message = sfTexture_createFromFile(GAME_MESSAGE, NULL);
@@ -28,26 +30,34 @@ void init_message(env_t *env)
 
 }
 
-void set_message(env_t *env, char *text)
+void set_message(env_t *env, char *text, float time)
 {
     if (!env->game_s.tmp_message)
         free(env->game_s.tmp_message);
     env->game_s.tmp_message = my_strdup(text);
+    env->game_s.time_message = time;
+    sfClock_restart(env->game_s.timer_message);
 }
 
 void display_message(env_t *env)
 {
+    sfTime tmp_time = sfClock_getElapsedTime(env->game_s.timer_message);
+    float seconds = sfTime_asSeconds(tmp_time);
+
     if (env->game_s.tmp_message == NULL)
         return;
-
-    sfVector2f pos = sfView_getCenter(env->game_s.view);
-    pos.x -= 200;
-    pos.y -= 180;
-    sfSprite_setPosition(env->game_s.s_message, pos);
-    sfText_setPosition(env->game_s.txt_message, (sfVector2f) {pos.x + 15, pos.y + 10});
-    sfText_setString(env->game_s.txt_message, env->game_s.tmp_message);
-    sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_message, NULL);
-    sfRenderWindow_drawText(env->core_s.window, env->game_s.txt_message, NULL);
-
-    env->game_s.tmp_message = NULL;
+    if (seconds > env->game_s.time_message) {
+        env->game_s.tmp_message = NULL;
+        sfClock_restart(env->game_s.timer_message);
+    }
+    else {
+        sfVector2f pos = sfView_getCenter(env->game_s.view);
+        pos.x -= 200;
+        pos.y -= 180;
+        sfSprite_setPosition(env->game_s.s_message, pos);
+        sfText_setPosition(env->game_s.txt_message, (sfVector2f) {pos.x + 15, pos.y + 10});
+        sfText_setString(env->game_s.txt_message, env->game_s.tmp_message);
+        sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_message, NULL);
+        sfRenderWindow_drawText(env->core_s.window, env->game_s.txt_message, NULL);
+    }
 }

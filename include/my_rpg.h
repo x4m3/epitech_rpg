@@ -143,9 +143,11 @@ struct game_s {
 
     // Messages
     char *tmp_message;
+    float time_message;
     sfTexture *t_message;
     sfSprite *s_message;
     sfText *txt_message;
+    sfClock *timer_message;
 
     // Inventory
     int inventory_open;
@@ -300,7 +302,7 @@ void init_textures_inventory(void);
 
 // src/game/message.c
 void init_message(env_t *env);
-void set_message(env_t *env, char *text);
+void set_message(env_t *env, char *text, float time);
 void display_message(env_t *env);
 
 // src/game/move.c

@@ -30,6 +30,7 @@
 
 #define STATUS_PLAY         (3)
 #define G_STATUS_PLAY       (0)
+#define G_STATUS_PAUSE      (1)
 
 #define MAX_BUTTONS         (50)
 #define MAX_HOUSES          (50)
@@ -242,6 +243,9 @@ void game_draw_ui(env_t *env);
 // src/game/draw/inventory.c
 void game_draw_inventory(env_t *env);
 
+// src/game/draw/pause.c
+void game_pause_draw(env_t *env);
+
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
 
@@ -302,6 +306,9 @@ void char_movement_right(env_t *env);
 void char_movement_left(env_t *env);
 void char_movement_top(env_t *env);
 void char_movement_down(env_t *env);
+
+// src/game/pause.c
+void game_display_pause(env_t *env);
 
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);

@@ -36,10 +36,12 @@ void init_game(env_t *env)
     for (int i = 0; i < MAX_ITEMS_USER; i++)
         env->game_s.inventory[i] = -1;
 
+
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);
     game_draw_inventory(env);
+    game_pause_draw(env);
     init_message(env);
 }
 
@@ -55,6 +57,8 @@ void game_play_draw(env_t *env)
 
     if (env->game_s.inventory_open)
         game_display_inventory(env);
+    if (env->game_s.actual_status == G_STATUS_PAUSE)
+        game_display_pause(env);
 
     display_message(env);
 

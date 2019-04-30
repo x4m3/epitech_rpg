@@ -55,7 +55,7 @@
 #define _SOUNDS_EFFECTS      (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
 
-#define MAX_LINE_HOW_TO     (8)
+#define MAX_LINE_HOW_TO     (50)
 
 struct core_s {
     char *project_name;

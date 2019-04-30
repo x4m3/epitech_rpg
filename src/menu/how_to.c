@@ -11,11 +11,10 @@
 size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);
-    char *line;
+    char *line = NULL;
     size_t i = 0;
 
     env->menu_s.s_how_to = malloc(sizeof(char) * MAX_LINE_HOW_TO + 1);
-    
     if (env->menu_s.s_how_to == NULL)
         return 1;
     if (fd == -1)
@@ -23,10 +22,10 @@ size_t read_from_file(env_t *env)
     while ((line = get_next_line(fd))) {
         if (!line)
             return 1;
-        env->menu_s.s_how_to[i] = my_strdup(line);
+        env->menu_s.s_how_to[i++] = my_strdup(line);
         free(line);
-        i++;
     }
+    env->menu_s.s_how_to[i] = NULL;
     close(fd);
     return 0;
 }
@@ -41,7 +40,7 @@ void init_menu_howto(env_t *env)
     create_button(env, (sfVector3f) {1420, 170, 0.5}, BUTTON_CLOSE, "close");
 
     init_menu_ui(env);
-    //draw_menu_howto(env);
+    draw_menu_howto(env);
     if (read_from_file(env))
         return;
 }
@@ -56,8 +55,7 @@ void game_menu_draw_howto(env_t *env)
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[0], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_icon, NULL);
-    //sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[0], NULL);
-    //draw_menu_howto(env);   
+    sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[0], NULL);
     display_buttons(env);
 
     sfRenderWindow_display(env->core_s.window);

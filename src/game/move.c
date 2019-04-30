@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static const float CHARACTER_SPEED = 0.5;
+static const float CHARACTER_SPEED = 6.0;
 
 void char_movement_right(env_t *env)
 {

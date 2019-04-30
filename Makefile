@@ -14,6 +14,7 @@ SRC :=		my_rpg.c\
 			src/game/draw/game_ui.c\
 			src/game/draw/inventory.c\
 			src/game/draw/view.c\
+			src/game/ennemies/directions.c\
 			src/game/ennemies/init.c\
 			src/game/ennemies/move.c\
 			src/game/houses/display.c\

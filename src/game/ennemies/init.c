@@ -26,6 +26,7 @@ void create_ennemies(env_t *env, sfVector2f pos, int type)
 
     env->ennemies_s[id].is_valid = true;
     env->ennemies_s[id].health = 100.0;
+    env->ennemies_s[id].time_animation = 0.0;
 
     env->ennemies_s[id].pos = pos;
 

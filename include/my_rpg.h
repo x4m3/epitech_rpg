@@ -202,6 +202,7 @@ struct ennemies_s {
 
     int rotation;
     int tmp_animation;
+    float time_animation;
 
     sfVector2f pos;
     sfSprite *s_ennemies;
@@ -240,6 +241,12 @@ void game_draw_inventory(env_t *env);
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
 
+// src/game/ennemies/directions.c
+void ennemies_movement_right(env_t *env, int ennemies_id);
+void ennemies_movement_left(env_t *env, int ennemies_id);
+void ennemies_movement_top(env_t *env, int ennemies_id);
+void ennemies_movement_down(env_t *env, int ennemies_id);
+
 // src/game/ennemies/init.c
 void create_ennemies(env_t *env, sfVector2f pos, int type);
 void delete_enemmies(env_t *env, int ennemies_id);
@@ -247,6 +254,8 @@ size_t count_ennemies(env_t *env);
 void display_ennemies(env_t *env);
 
 // src/game/ennemies/move.c
+void set_ennemies_rotation(env_t *env, int ennemies_id, int rotation);
+void set_ennemies_animation(env_t *env, int ennemies_id);
 void move_ennemies(env_t *env);
 
 // src/game/houses/display.c

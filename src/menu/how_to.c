@@ -8,6 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
+/*
 size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);
@@ -29,7 +30,7 @@ size_t read_from_file(env_t *env)
     close(fd);
     return 0;
 }
-
+*/
 void init_menu_howto(env_t *env)
 {
     env->core_s.actual_status = STATUS_MENU;
@@ -40,9 +41,9 @@ void init_menu_howto(env_t *env)
     create_button(env, (sfVector3f) {1420, 170, 0.5}, BUTTON_CLOSE, "close");
 
     init_menu_ui(env);
-    draw_menu_howto(env);
-    if (read_from_file(env))
-        return;
+    //draw_menu_howto(env);
+  //  if (read_from_file(env))
+  //      return;
 }
 
 
@@ -55,7 +56,7 @@ void game_menu_draw_howto(env_t *env)
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[0], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_icon, NULL);
-    sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[0], NULL);
+    //sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[0], NULL);
     display_buttons(env);
 
     sfRenderWindow_display(env->core_s.window);

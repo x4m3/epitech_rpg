@@ -38,7 +38,7 @@ static void draw_icons(env_t *env)
     sfSprite_setScale(env->menu_s.s_icon, (sfVector2f) {0.8, 0.8});
     sfSprite_setPosition(env->menu_s.s_icon, (sfVector2f) {1920/2, 1080/6});
 }
-
+/*
 void draw_how_to_play(env_t *env)
 {
     size_t i = 0;
@@ -55,10 +55,10 @@ void draw_how_to_play(env_t *env)
     }
     printf("%ld\n", i);
 }
-
+*/
 void draw_menu_howto(env_t *env)
 {
-    draw_how_to_play(env);
+  //  draw_how_to_play(env);
     draw_box(env);
     draw_icons(env);
 }

@@ -69,6 +69,7 @@
 #define _SOUNDS_EFFECTS      (1)
 #define _SOUNDS_CLICK        ("assets/sounds/click.wav")
 #define _MUSIC_BACKGROUND    ("assets/sounds/background.ogg")
+#define _MUSIC_GAME          ("assets/sounds/game.ogg")
 
 struct core_s {
     char *project_name;
@@ -81,6 +82,7 @@ struct core_s {
     // Settings
     sfMusic *m_effects[_SOUNDS_EFFECTS];
     sfMusic *m_music;
+    sfMusic *m_game;
 
     // Utils
     int framerate;

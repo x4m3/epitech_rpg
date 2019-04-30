@@ -28,6 +28,8 @@ void init_game(env_t *env)
     env->core_s.actual_status = STATUS_PLAY;
     env->game_s.actual_status = G_STATUS_PLAY;
 
+    sfMusic_stop(env->core_s.m_music);
+    sfMusic_play(env->core_s.m_game);
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);

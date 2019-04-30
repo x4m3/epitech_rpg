@@ -12,10 +12,13 @@ void init_sounds(env_t *env)
 {
     env->core_s.m_effects[0] = sfMusic_createFromFile(_SOUNDS_CLICK);
     env->core_s.m_music = sfMusic_createFromFile(_MUSIC_BACKGROUND);
+    env->core_s.m_game = sfMusic_createFromFile(_MUSIC_GAME);
 
     sfMusic_setVolume(env->core_s.m_effects[0], 100.0);
     sfMusic_setVolume(env->core_s.m_music, 100.0);
+    sfMusic_setVolume(env->core_s.m_game, 100.0);
     sfMusic_setLoop(env->core_s.m_music, sfTrue);
+    sfMusic_setLoop(env->core_s.m_game, sfTrue);
     sfMusic_play(env->core_s.m_music);
 }
 

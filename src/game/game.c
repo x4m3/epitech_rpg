@@ -28,6 +28,7 @@ void init_game(env_t *env)
     env->core_s.actual_status = STATUS_PLAY;
     env->game_s.actual_status = G_STATUS_PLAY;
 
+<<<<<<< HEAD
     env->game_s.inventory_open = false;
     env->game_s.house_id = 0;
     env->game_s.count_kill = 0;
@@ -37,6 +38,10 @@ void init_game(env_t *env)
         env->game_s.inventory[i] = -1;
 
 
+=======
+    sfMusic_stop(env->core_s.m_music);
+    sfMusic_play(env->core_s.m_game);
+>>>>>>> phil
     destroy_all_buttons(env);
     game_draw_view(env);
     game_draw_character(env);

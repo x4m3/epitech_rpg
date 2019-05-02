@@ -36,7 +36,8 @@ static void draw_icons(env_t *env)
     sfSprite_setTexture(env->menu_s.s_icon, env->menu_s.t_icon, sfTrue);
 
     sfFloatRect bounds = sfSprite_getGlobalBounds(env->menu_s.s_icon);
-    sfSprite_setOrigin(env->menu_s.s_icon, (sfVector2f) {bounds.width / 2, bounds.height / 2});
+    sfSprite_setOrigin(env->menu_s.s_icon,
+    (sfVector2f) {bounds.width / 2, bounds.height / 2});
 
     sfSprite_setScale(env->menu_s.s_icon, (sfVector2f) {0.5, 0.5});
     sfSprite_setPosition(env->menu_s.s_icon, (sfVector2f) {1920/2, 1080/3.3});
@@ -47,8 +48,10 @@ static void draw_text(env_t *env)
     for (int i = 0; i < 2; i++) {
         env->menu_s.txt_sets[i] = sfText_create();
         sfText_setFont(env->menu_s.txt_sets[i], env->core_s.f_oetz);
-        sfText_setColor(env->menu_s.txt_sets[i], (sfColor) {220, 220, 220, 255});
-        sfText_setOutlineColor(env->menu_s.txt_sets[i], (sfColor) {49, 100, 12, 255});
+        sfText_setColor(env->menu_s.txt_sets[i],
+        (sfColor) {220, 220, 220, 255});
+        sfText_setOutlineColor(env->menu_s.txt_sets[i],
+        (sfColor) {49, 100, 12, 255});
         sfText_setOutlineThickness(env->menu_s.txt_sets[i], 2.0);
     }
     sfText_setString(env->menu_s.txt_sets[0], "Music");

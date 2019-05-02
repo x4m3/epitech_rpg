@@ -11,6 +11,7 @@
 void display_buttons(env_t *env)
 {
     for (int i = 0; i < MAX_BUTTONS; i++) if (env->buttons_s[i].is_valid) {
-        sfRenderWindow_drawSprite(env->core_s.window, env->buttons_s[i].sprite, NULL);
+        sfRenderWindow_drawSprite(env->core_s.window, env->buttons_s[i].sprite,
+        NULL);
     }
 }

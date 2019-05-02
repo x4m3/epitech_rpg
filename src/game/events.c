@@ -22,6 +22,7 @@ void game_events(env_t *env)
         if (env->core_s.event.key.code == sfKeySpace)
             fight_ennemies(env);
         if (env->core_s.event.key.code == sfKeyI)
-            env->game_s.inventory_open = (env->game_s.inventory_open ? false : true);
+            env->game_s.inventory_open =
+            (env->game_s.inventory_open ? false : true);
     }
 }

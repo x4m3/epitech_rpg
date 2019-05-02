@@ -22,7 +22,6 @@ void on_button_hitted(env_t *env, int button_id)
 {
     if (env->core_s.actual_status == STATUS_MENU)
         on_menu_button_hitted(env, button_id);
-    printf("button_id: %d is hitted\n", button_id);
     sfMusic_stop(env->core_s.m_effects[0]);
     sfMusic_play(env->core_s.m_effects[0]);
 }

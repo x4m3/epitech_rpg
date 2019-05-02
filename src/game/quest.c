@@ -8,6 +8,11 @@
 #include "my.h"
 #include "my_rpg.h"
 
+static char* MESSAGE_START =
+"Tu as vu juste!\n\n\
+Detruit les ennemies avec\n\
+la touche ESPACE.";
+
 static int check_house_area(env_t *env)
 {
     sfCirclePos circle;
@@ -42,13 +47,11 @@ static void check_must_spawn(env_t *env)
 
 void check_quest(env_t *env)
 {
-    //printf("check_house: %d | house_id: %d\n", )
-    if (check_house_area(env) == env->game_s.house_id && count_ennemies(env) <= 0) {
-        printf("tu rentres dans l'espace de la maison Id: %d\n", env->game_s.house_id);
-        set_message(env, "Tu as vu juste!\n\nDetruit les ennemies avec\nla touche ESPACE.", 4);
+    if (check_house_area(env) == env->game_s.house_id
+    && count_ennemies(env) <= 0) {
+        set_message(env, MESSAGE_START, 4);
 
         env->game_s.must_spawn = ((env->game_s.house_id + 1) * 3);
-        printf("must_spawn: %d\n", env->game_s.must_spawn);
     }
     check_must_spawn(env);
 }

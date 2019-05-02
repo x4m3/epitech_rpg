@@ -340,6 +340,10 @@ void check_quest(env_t *env);
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);
 
+// src/map/texture.c
+sfIntRect get_texture_map(char texture);
+sfIntRect get_texture_map_2(char texture);
+
 // src/menu/draw/how_to.c
 void draw_menu_howto(env_t *env);
 

@@ -51,7 +51,6 @@ static void send_fight_ennemies(env_t *env, int ennemies_id)
 
 void fight_ennemies(env_t *env)
 {
-    (void) env;
     for (int i = 0; i < MAX_ENNEMIES; i++) if (env->ennemies_s[i].is_valid) {
         if (check_collision_ennemies(env, i))
             return send_fight_ennemies(env, i);

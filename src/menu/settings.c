@@ -40,7 +40,8 @@ void game_menu_draw_settings(env_t *env)
 {
     sfRenderWindow_clear(env->core_s.window, sfBlack);
 
-    sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_background, NULL);
+    sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_background,
+    NULL);
 
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[0], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);

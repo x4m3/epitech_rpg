@@ -16,7 +16,8 @@ void init_menu(env_t *env)
     destroy_all_buttons(env);
 
     create_button(env, (sfVector3f) {150, 150, 0.5}, BUTTON_HOWTO, "howto");
-    create_button(env, (sfVector3f) {1800, 150, 0.5}, BUTTON_SETTINGS, "settings");
+    create_button(env, (sfVector3f) {1800, 150, 0.5}, BUTTON_SETTINGS,
+    "settings");
     create_button(env, (sfVector3f) {1900/2, 600, 1.0}, BUTTON_PLAY, "play");
     create_button(env, (sfVector3f) {150, 950, 0.5}, BUTTON_EXIT, "exit");
 

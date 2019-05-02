@@ -15,13 +15,16 @@ static void draw_box(env_t *env)
 
     for (int i = 0; i < 2; i++) {
         env->menu_s.s_box[i] = sfSprite_create();
-        sfSprite_setTexture(env->menu_s.s_box[i], env->menu_s.t_box[i], sfTrue);
+        sfSprite_setTexture(env->menu_s.s_box[i], env->menu_s.t_box[i],
+        sfTrue);
 
         sfFloatRect bounds = sfSprite_getGlobalBounds(env->menu_s.s_box[i]);
-        sfSprite_setOrigin(env->menu_s.s_box[i], (sfVector2f) {bounds.width / 2, bounds.height / 2});
+        sfSprite_setOrigin(env->menu_s.s_box[i],
+        (sfVector2f) {bounds.width / 2, bounds.height / 2});
 
         sfSprite_setScale(env->menu_s.s_box[i], (sfVector2f) {0.5, 0.5});
-        sfSprite_setPosition(env->menu_s.s_box[i], (sfVector2f) {1920 / 2, 1080 / 2});
+        sfSprite_setPosition(env->menu_s.s_box[i],
+        (sfVector2f) {1920 / 2, 1080 / 2});
     }
 }
 

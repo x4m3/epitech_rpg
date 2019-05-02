@@ -7,4 +7,3 @@
 
 #include "my.h"
 #include "my_rpg.h"
-

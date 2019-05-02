@@ -12,7 +12,8 @@ static void game_display_map(env_t *env)
 {
     for (int i = 0; env->game_s.s_map[i] != NULL; i++) {
         for (int j = 0; env->game_s.s_map[i][j] != NULL; j++) {
-            sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_map[i][j], NULL);
+            sfRenderWindow_drawSprite(env->core_s.window,
+            env->game_s.s_map[i][j], NULL);
         }
     }
 }
@@ -20,7 +21,8 @@ static void game_display_map(env_t *env)
 static void game_display_character(env_t *env)
 {
     sfSprite_setPosition(env->game_s.s_character, env->game_s.p_character);
-    sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_character, NULL);
+    sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_character,
+    NULL);
 }
 
 void game_play_draw(env_t *env)

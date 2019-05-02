@@ -34,6 +34,7 @@ SRC :=		my_rpg.c\
 			src/game/quest.c\
 			src/game/timers.c\
 			src/map/init.c\
+			src/map/texture.c\
 			src/menu/draw/how_to.c\
 			src/menu/draw/menu_ui.c\
 			src/menu/draw/settings.c\

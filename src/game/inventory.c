@@ -25,17 +25,18 @@ void game_display_inventory(env_t *env)
 {
     sfVector2f pos = sfView_getCenter(env->game_s.view);
     sfSprite_setPosition(env->game_s.s_inventory, pos);
-    sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_inventory, NULL);
+    sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_inventory,
+    NULL);
     for (int i = 0; i < MAX_ITEMS_USER; i++) {
         if (env->game_s.inventory[i] == -1)
             continue;
-
         sfVector2f tmp_pos = {
             (pos.x - (395 / 2)) + (95 * (i % 4)) + 10,
             (pos.y - 66) + ((i / 4) * 95) + 10
         };
         sfSprite *tmp_sprite = sfSprite_create();
-        sfSprite_setTexture(tmp_sprite, inventory_type_s[env->game_s.inventory[i]].t_item, sfTrue);
+        sfSprite_setTexture(tmp_sprite,
+        inventory_type_s[env->game_s.inventory[i]].t_item, sfTrue);
         sfSprite_setOrigin(tmp_sprite, (sfVector2f) {0, 0});
         sfSprite_setPosition(tmp_sprite, tmp_pos);
         sfRenderWindow_drawSprite(env->core_s.window, tmp_sprite, NULL);

@@ -15,13 +15,16 @@ static void draw_box(env_t *env)
 
     for (int i = 0; i < 2; i++) {
         env->menu_s.s_box[i] = sfSprite_create();
-        sfSprite_setTexture(env->menu_s.s_box[i], env->menu_s.t_box[i], sfTrue);
+        sfSprite_setTexture(env->menu_s.s_box[i], env->menu_s.t_box[i],
+        sfTrue);
 
         sfFloatRect bounds = sfSprite_getGlobalBounds(env->menu_s.s_box[i]);
-        sfSprite_setOrigin(env->menu_s.s_box[i], (sfVector2f) {bounds.width / 2, bounds.height / 2});
+        sfSprite_setOrigin(env->menu_s.s_box[i],
+        (sfVector2f) {bounds.width / 2, bounds.height / 2});
 
         sfSprite_setScale(env->menu_s.s_box[i], (sfVector2f) {0.8, 0.8});
-        sfSprite_setPosition(env->menu_s.s_box[i], (sfVector2f) {1920 / 2, 1080 / 2});
+        sfSprite_setPosition(env->menu_s.s_box[i],
+        (sfVector2f) {1920 / 2, 1080 / 2});
     }
 }
 
@@ -33,7 +36,8 @@ static void draw_icons(env_t *env)
     sfSprite_setTexture(env->menu_s.s_icon, env->menu_s.t_icon, sfTrue);
 
     sfFloatRect bounds = sfSprite_getGlobalBounds(env->menu_s.s_icon);
-    sfSprite_setOrigin(env->menu_s.s_icon, (sfVector2f) {bounds.width / 2, bounds.height / 2});
+    sfSprite_setOrigin(env->menu_s.s_icon,
+    (sfVector2f) {bounds.width / 2, bounds.height / 2});
 
     sfSprite_setScale(env->menu_s.s_icon, (sfVector2f) {0.8, 0.8});
     sfSprite_setPosition(env->menu_s.s_icon, (sfVector2f) {1920/2, 1080/6});

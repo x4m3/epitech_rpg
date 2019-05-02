@@ -15,9 +15,8 @@ void set_ennemies_rotation(env_t *env, int ennemies_id, int rotation)
     if (env->ennemies_s[ennemies_id].rotation == rotation)
         return;
 
-    printf("Rotation: %d | env: %d\n", rotation, env->ennemies_s[ennemies_id].rotation);
-
-    sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies, (sfIntRect) {
+    sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies,
+    (sfIntRect) {
         env->ennemies_s[ennemies_id].tmp_animation * 32, 0, 32, 32
     });
     env->ennemies_s[ennemies_id].rotation = rotation;
@@ -33,7 +32,8 @@ void set_ennemies_animation(env_t *env, int ennemies_id)
         else
             env->ennemies_s[ennemies_id].tmp_animation++;
 
-        sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies, (sfIntRect) {
+        sfSprite_setTextureRect(env->ennemies_s[ennemies_id].s_ennemies,
+        (sfIntRect) {
             env->ennemies_s[ennemies_id].tmp_animation * 32, 0, 32, 32
         });
     }

@@ -13,7 +13,8 @@ void set_window(env_t *env)
     env->core_s.window = sfRenderWindow_create(env->core_s.mode,
     env->core_s.project_name, sfClose, NULL);
 
-    sfRenderWindow_setFramerateLimit(env->core_s.window, env->core_s.framerate);
+    sfRenderWindow_setFramerateLimit(env->core_s.window,
+    env->core_s.framerate);
 
     init_fonts(env);
     init_sounds(env);

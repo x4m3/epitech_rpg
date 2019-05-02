@@ -54,7 +54,8 @@ void display_message(env_t *env)
         pos.x -= 200;
         pos.y -= 180;
         sfSprite_setPosition(env->game_s.s_message, pos);
-        sfText_setPosition(env->game_s.txt_message, (sfVector2f) {pos.x + 15, pos.y + 10});
+        sfText_setPosition(env->game_s.txt_message,
+        (sfVector2f) {pos.x + 15, pos.y + 10});
         sfText_setString(env->game_s.txt_message, env->game_s.tmp_message);
         sfRenderWindow_drawSprite(env->core_s.window, env->game_s.s_message, NULL);
         sfRenderWindow_drawText(env->core_s.window, env->game_s.txt_message, NULL);

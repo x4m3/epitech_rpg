@@ -27,14 +27,17 @@ void create_ennemies(env_t *env, sfVector2f pos, int type)
     env->ennemies_s[id].is_valid = true;
     env->ennemies_s[id].health = 100.0;
     env->ennemies_s[id].time_animation = 0.0;
-
     env->ennemies_s[id].pos = pos;
 
     env->ennemies_s[id].s_ennemies = sfSprite_create();
-    sfSprite_setTexture(env->ennemies_s[id].s_ennemies, env->game_s.t_character, sfTrue);
-    sfSprite_setTextureRect(env->ennemies_s[id].s_ennemies, (sfIntRect) {0, 0, 32, 32});
-    sfSprite_setOrigin(env->ennemies_s[id].s_ennemies, (sfVector2f) {32 / 2, 32 / 2});
-    sfSprite_setPosition(env->ennemies_s[id].s_ennemies, env->ennemies_s[id].pos);
+    sfSprite_setTexture(env->ennemies_s[id].s_ennemies, env->game_s.t_character,
+    sfTrue);
+    sfSprite_setTextureRect(env->ennemies_s[id].s_ennemies,
+    (sfIntRect) {0, 0, 32, 32});
+    sfSprite_setOrigin(env->ennemies_s[id].s_ennemies,
+    (sfVector2f) {32 / 2, 32 / 2});
+    sfSprite_setPosition(env->ennemies_s[id].s_ennemies,
+    env->ennemies_s[id].pos);
 }
 
 void delete_enemmies(env_t *env, int ennemies_id)

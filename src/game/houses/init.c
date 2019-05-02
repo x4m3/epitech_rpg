@@ -40,10 +40,14 @@ void create_house(env_t *env, houses_t tmp_house)
     env->houses_s[tmp_id].pos.y = tmp_house.pos.y;
 
     env->houses_s[tmp_id].sprite = sfSprite_create();
-    sfSprite_setTexture(env->houses_s[tmp_id].sprite, env->game_s.t_map, sfTrue);
-    sfSprite_setTextureRect(env->houses_s[tmp_id].sprite, (sfIntRect) {1005, 0, 85, 138});
-    sfSprite_setOrigin(env->houses_s[tmp_id].sprite, (sfVector2f) {85 / 2, 138 / 2});
-    sfSprite_setPosition(env->houses_s[tmp_id].sprite, env->houses_s[tmp_id].pos);
+    sfSprite_setTexture(env->houses_s[tmp_id].sprite, env->game_s.t_map,
+    sfTrue);
+    sfSprite_setTextureRect(env->houses_s[tmp_id].sprite,
+    (sfIntRect) {1005, 0, 85, 138});
+    sfSprite_setOrigin(env->houses_s[tmp_id].sprite,
+    (sfVector2f) {85 / 2, 138 / 2});
+    sfSprite_setPosition(env->houses_s[tmp_id].sprite,
+    env->houses_s[tmp_id].pos);
 }
 
 void delete_house(env_t *env, int house_id)

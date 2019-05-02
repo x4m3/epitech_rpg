@@ -11,5 +11,4 @@
 void game_display_pause(env_t *env)
 {
     (void) env;
-    //
 }

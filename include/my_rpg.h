@@ -338,6 +338,8 @@ void on_menu_button_hitted(env_t *env, int button_id);
 void init_menu_howto(env_t *env);
 void draw_how_to_play(env_t *env);
 void game_menu_draw_howto(env_t *env);
+size_t read_from_file(env_t *env);
+
 
 // src/menu/init.c
 void game_menu(env_t *env);

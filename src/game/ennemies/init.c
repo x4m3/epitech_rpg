@@ -52,7 +52,6 @@ void delete_enemmies(env_t *env, int ennemies_id)
     env->ennemies_s[ennemies_id].pos.y = 0.0;
 }
 
-
 size_t count_ennemies(env_t *env)
 {
     size_t count = 0;
@@ -67,9 +66,7 @@ void display_ennemies(env_t *env)
 {
     for (int i = 0; i < MAX_ENNEMIES; i++) {
         if (env->ennemies_s[i].is_valid)
-            sfRenderWindow_drawSprite(
-                env->core_s.window,
-                env->ennemies_s[i].s_ennemies,
-                NULL);
+            sfRenderWindow_drawSprite(env->core_s.window,
+            env->ennemies_s[i].s_ennemies, NULL);
     }
 }

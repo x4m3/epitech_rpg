@@ -55,7 +55,6 @@ void init_menu_howto(env_t *env)
         return;
 }
 
-
 void game_menu_draw_howto(env_t *env)
 {
     sfRenderWindow_clear(env->core_s.window, sfBlack);

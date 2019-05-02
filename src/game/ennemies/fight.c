@@ -46,13 +46,16 @@ static void send_fight_ennemies(env_t *env, int ennemies_id)
         if (env->game_s.house_id > get_max_house(env))
             set_message(env, MESSAGE_END, 5);
     }
-
 }
 
 void fight_ennemies(env_t *env)
 {
-    for (int i = 0; i < MAX_ENNEMIES; i++) if (env->ennemies_s[i].is_valid) {
-        if (check_collision_ennemies(env, i))
-            return send_fight_ennemies(env, i);
+    for (int i = 0; i < MAX_ENNEMIES; i++) {
+        if (!env->ennemies_s[i].is_valid)
+            continue;
+        if (check_collision_ennemies(env, i)) {
+            send_fight_ennemies(env, i);
+            return;
+        }
     }
 }

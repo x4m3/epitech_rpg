@@ -40,7 +40,6 @@ int collision_circle(sfVector2f pos, sfCirclePos circle)
 
 int check_collision(env_t *env, sfVector2i move)
 {
-    int house_id = -1;
     sfVector2i pos = {
         (env->game_s.p_character.x + move.x) / 64,
         (env->game_s.p_character.y + move.y) / 64

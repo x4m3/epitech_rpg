@@ -17,7 +17,10 @@ static int check_house_area(env_t *env)
 {
     sfCirclePos circle;
 
-    for (int i = 0; i < MAX_HOUSES; i++) if (env->houses_s[i].is_valid) {
+    for (int i = 0; i < MAX_HOUSES; i++) {
+        if (!env->houses_s[i].is_valid)
+            continue;
+
         circle = (sfCirclePos) {
             env->houses_s[i].pos.x,
             env->houses_s[i].pos.y,

@@ -21,7 +21,6 @@ static void create_settings_buttons(env_t *env)
         create_button(env, (sfVector3f) {1050, 500, 0.5}, BUTTON_OFF, "sound");
 }
 
-
 void init_menu_settings(env_t *env)
 {
     env->core_s.actual_status = STATUS_MENU;

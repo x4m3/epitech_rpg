@@ -43,8 +43,24 @@ static void draw_icons(env_t *env)
     sfSprite_setPosition(env->menu_s.s_icon, (sfVector2f) {1920/2, 1080/6});
 }
 
+void draw_how_to_play(env_t *env)
+{
+    size_t i = 0;
+
+    for(i = 0; env->menu_s.s_how_to[i] != NULL; i++) {
+        env->menu_s.t_how_to[i] = sfText_create();
+        sfText_setFont(env->menu_s.t_how_to[i], env->core_s.f_oetz);
+        sfText_setColor(env->menu_s.t_how_to[i], (sfColor) {220, 220, 220, 255});
+        sfText_setOutlineColor(env->menu_s.t_how_to[i], (sfColor) {49, 100, 12, 255});
+        sfText_setOutlineThickness(env->menu_s.t_how_to[i], 2.0);
+        sfText_setString(env->menu_s.t_how_to[i], env->menu_s.s_how_to[i]);
+        sfText_setPosition(env->menu_s.t_how_to[i], (sfVector2f) {550, 310 + (i * 60)});
+    }
+}
+
 void draw_menu_howto(env_t *env)
 {
     draw_box(env);
     draw_icons(env);
+    draw_how_to_play(env);
 }

@@ -91,6 +91,10 @@ struct inventory_type_t {
 
 extern struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS];
 
+#define MAX_LINE_HOW_TO     (50)
+
+#define MAX_LINE_HOW_TO     (50)
+
 struct core_s {
     char *project_name;
     sfVideoMode mode;
@@ -186,12 +190,17 @@ struct menu_s {
     sfTexture *t_background;
     sfSprite *s_background;
 
-    // Settings
+    //how to play
+    char **s_how_to;
+    sfText *t_how_to[MAX_LINE_HOW_TO];
+
+   // Settings
     sfTexture *t_icon;
     sfTexture *t_box[2];
     sfSprite *s_icon;
     sfSprite *s_box[2];
     sfText *txt_sets[2];
+
 };
 typedef struct menu_s menu_t;
 
@@ -371,7 +380,10 @@ void on_menu_button_hitted(env_t *env, int button_id);
 
 // src/menu/how_to.c
 void init_menu_howto(env_t *env);
+void draw_how_to_play(env_t *env);
 void game_menu_draw_howto(env_t *env);
+size_t read_from_file(env_t *env);
+
 
 // src/menu/init.c
 void game_menu(env_t *env);

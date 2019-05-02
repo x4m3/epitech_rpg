@@ -8,8 +8,8 @@
 #include "my.h"
 #include "my_rpg.h"
 
-void game_display_pause(env_t *env)
+void game_draw_quest(env_t *env)
 {
-    (void) env;
-    //
+    env->game_s.clock_spawn = sfClock_create();
+    sfClock_restart(env->game_s.clock_spawn);
 }

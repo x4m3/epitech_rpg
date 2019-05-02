@@ -23,11 +23,10 @@ void init_message(env_t *env)
     sfSprite_setScale(env->game_s.s_message, (sfVector2f) {0.3, 0.3});
 
     sfText_setCharacterSize(env->game_s.txt_message, 12);
-    sfText_setFont(env->game_s.txt_message, env->core_s.f_oetz);
+    sfText_setFont(env->game_s.txt_message, env->core_s.f_retron);
     sfText_setColor(env->game_s.txt_message, (sfColor) {220, 220, 220, 255});
     sfText_setOutlineColor(env->game_s.txt_message, (sfColor) {0, 0, 0, 255});
     sfText_setOutlineThickness(env->game_s.txt_message, 2.0);
-
 }
 
 void set_message(env_t *env, char *text, float time)
@@ -51,7 +50,7 @@ void display_message(env_t *env)
         sfClock_restart(env->game_s.timer_message);
     }
     else {
-        sfVector2f pos = sfView_getCenter(env->game_s.view);
+        sfVector2f pos = env->game_s.p_character;
         pos.x -= 200;
         pos.y -= 180;
         sfSprite_setPosition(env->game_s.s_message, pos);

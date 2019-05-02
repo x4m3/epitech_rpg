@@ -11,4 +11,5 @@
 void init_fonts(env_t *env)
 {
     env->core_s.f_oetz = sfFont_createFromFile(FONT_OETZ);
+    env->core_s.f_retron = sfFont_createFromFile(FONT_RETRON);
 }

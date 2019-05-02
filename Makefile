@@ -14,8 +14,10 @@ SRC :=		my_rpg.c\
 			src/game/draw/game_ui.c\
 			src/game/draw/inventory.c\
 			src/game/draw/pause.c\
+			src/game/draw/quest.c\
 			src/game/draw/view.c\
 			src/game/ennemies/directions.c\
+			src/game/ennemies/fight.c\
 			src/game/ennemies/init.c\
 			src/game/ennemies/move.c\
 			src/game/houses/display.c\
@@ -29,6 +31,7 @@ SRC :=		my_rpg.c\
 			src/game/message.c\
 			src/game/move.c\
 			src/game/pause.c\
+			src/game/quest.c\
 			src/game/timers.c\
 			src/map/init.c\
 			src/menu/draw/how_to.c\

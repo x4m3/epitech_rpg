@@ -17,6 +17,16 @@ static int get_free_slot_house(env_t *env)
     return (-1);
 }
 
+int get_max_house(env_t *env)
+{
+    int max_index = 0;
+    for (size_t i = 0; i < MAX_HOUSES; i++) {
+        if (env->houses_s[i].is_valid)
+            max_index = i;
+    }
+    return (max_index);
+}
+
 void create_house(env_t *env, houses_t tmp_house)
 {
     int tmp_id = -1;

@@ -10,5 +10,6 @@
 
 void game_pause_draw(env_t *env)
 {
+    (void) env;
     // sfSprite_create(), ...
 }

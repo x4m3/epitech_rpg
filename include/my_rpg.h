@@ -40,7 +40,8 @@
 
 #define HELP_FILE           ("data/help.txt")
 
-#define FONT_OETZ           ("assets/oetztype.ttf")
+#define FONT_RETRON        ("assets/fonts/retron.ttf")
+#define FONT_OETZ           ("assets/fonts/oetztype.ttf")
 
 #define GAME_ASSETS_MAP     ("assets/64x64_map_tile_2.png")
 #define GAME_CHARACTER      ("assets/character_sprite.png")
@@ -108,6 +109,7 @@ struct core_s {
 
     // Fonts
     sfFont *f_oetz;
+    sfFont *f_retron;
 
     // Delta time
     sfClock *clock;
@@ -140,6 +142,8 @@ struct game_s {
     // GamePlay
     int house_id;
     int count_kill;
+    int must_spawn;
+    sfClock *clock_spawn;
 
     // Messages
     char *tmp_message;
@@ -238,6 +242,13 @@ typedef enum pos
     OFF
 }pos_t;
 
+typedef struct
+{
+    int x;
+    int y;
+    int r;
+} sfCirclePos;
+
 // src/game/draw/character.c
 void game_draw_character(env_t *env);
 
@@ -250,6 +261,9 @@ void game_draw_inventory(env_t *env);
 // src/game/draw/pause.c
 void game_pause_draw(env_t *env);
 
+// src/game/draw/quest.c
+void game_draw_quest(env_t *env);
+
 // src/game/draw/view.c
 void game_draw_view(env_t *env);
 
@@ -258,6 +272,9 @@ void ennemies_movement_right(env_t *env, int ennemies_id);
 void ennemies_movement_left(env_t *env, int ennemies_id);
 void ennemies_movement_top(env_t *env, int ennemies_id);
 void ennemies_movement_down(env_t *env, int ennemies_id);
+
+// src/game/ennemies/fight.c
+void fight_ennemies(env_t *env);
 
 // src/game/ennemies/init.c
 void create_ennemies(env_t *env, sfVector2f pos, int type);
@@ -274,6 +291,8 @@ void move_ennemies(env_t *env);
 void display_houses(env_t *env);
 
 // src/game/houses/init.c
+int count_houses_(env_t *env);
+int get_max_house(env_t *env);
 void create_house(env_t *env, houses_t tmp_house);
 void delete_house(env_t *env, int house_id);
 
@@ -282,16 +301,17 @@ void set_character_rotation(env_t *env, int rotation);
 void set_character_animation(env_t *env);
 
 // src/game/collision.c
+int collision_circle(sfVector2f pos, sfCirclePos circle);
 int check_collision(env_t *env, sfVector2i move);
 
 // src/game/events.c
 void game_events(env_t *env);
 
 // src/game/game.c
-void init_game(env_t *env);
 void game_play_draw(env_t *env);
 
 // src/game/init.c
+void init_game(env_t *env);
 void game_play(env_t *env);
 
 // src/game/inventory.c
@@ -313,6 +333,9 @@ void char_movement_down(env_t *env);
 
 // src/game/pause.c
 void game_display_pause(env_t *env);
+
+// src/game/quests.c
+void check_quest(env_t *env);
 
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);

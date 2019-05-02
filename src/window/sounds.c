@@ -26,6 +26,7 @@ void set_sounds_music(env_t *env)
 {
     float volume = sfMusic_getVolume(env->core_s.m_music);
     sfMusic_setVolume(env->core_s.m_music, (volume >= 100.0 ? 0.0 : 100.0));
+    sfMusic_setVolume(env->core_s.m_game, (volume >= 100.0 ? 0.0 : 100.0));
 }
 
 void set_sounds_effects(env_t *env)

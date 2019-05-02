@@ -42,6 +42,17 @@ static int check_house_collision(env_t *env, sfVector2i move)
     return (-1);
 }
 
+int collision_circle(sfVector2f pos, sfCirclePos circle)
+{
+    int d2 = (pos.x - circle.x) * (pos.x - circle.x) +
+    (pos.y - circle.y) * (pos.y - circle.y);
+
+    if (d2 > circle.r * circle.r)
+        return (false);
+    else
+        return (true);
+}
+
 int check_collision(env_t *env, sfVector2i move)
 {
     int house_id = -1;
@@ -57,7 +68,6 @@ int check_collision(env_t *env, sfVector2i move)
         if (house_id == env->game_s.house_id &&
         env->game_s.count_kill <= 0) {
             printf("Enter in collision with house ID: %d\n", house_id);
-            create_ennemies(env, env->houses_s[house_id].pos, 1);
         }
         return (1);
     }

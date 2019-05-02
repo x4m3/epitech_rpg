@@ -48,6 +48,15 @@ static void send_fight_ennemies(env_t *env, int ennemies_id)
     }
 }
 
+static void send_fight_player(env_t *env)
+{
+    env->game_s.health -= 20.0;
+
+    if (env->game_s.health <= 0) {
+        init_game_over(env);
+    }
+}
+
 void fight_ennemies(env_t *env)
 {
     for (int i = 0; i < MAX_ENNEMIES; i++) {
@@ -56,6 +65,25 @@ void fight_ennemies(env_t *env)
         if (check_collision_ennemies(env, i)) {
             send_fight_ennemies(env, i);
             return;
+        }
+    }
+}
+
+void fight_player(env_t *env)
+{
+    for (int i = 0; i < MAX_ENNEMIES; i++) {
+        if (!env->ennemies_s[i].is_valid)
+            continue;
+
+        sfTime tmp_time = sfClock_getElapsedTime(env->ennemies_s[i].clock);
+        float seconds = sfTime_asSeconds(tmp_time);
+
+        if (seconds < 1.5)
+            continue;
+
+        sfClock_restart(env->ennemies_s[i].clock);
+        if (check_collision_ennemies(env, i)) {
+            send_fight_player(env);
         }
     }
 }

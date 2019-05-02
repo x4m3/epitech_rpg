@@ -23,6 +23,7 @@ static void reset_var_game(env_t *env)
     env->game_s.actual_status = G_STATUS_PLAY;
 
     env->game_s.inventory_open = false;
+    env->game_s.health = 100.0;
     env->game_s.house_id = 0;
     env->game_s.count_kill = 0;
     env->game_s.must_spawn = 0;
@@ -49,7 +50,10 @@ void init_game(env_t *env)
 
 void game_play(env_t *env)
 {
-    check_quest(env);
-    move_ennemies(env);
+    if (env->game_s.actual_status == G_STATUS_PLAY) {
+        check_quest(env);
+        fight_player(env);
+        move_ennemies(env);
+    }
     game_play_draw(env);
 }

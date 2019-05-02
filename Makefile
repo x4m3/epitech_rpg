@@ -26,6 +26,7 @@ SRC :=		my_rpg.c\
 			src/game/collision.c\
 			src/game/events.c\
 			src/game/game.c\
+			src/game/gameover.c\
 			src/game/init.c\
 			src/game/inventory.c\
 			src/game/message.c\

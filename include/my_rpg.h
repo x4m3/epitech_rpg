@@ -31,6 +31,7 @@
 #define STATUS_PLAY         (3)
 #define G_STATUS_PLAY       (0)
 #define G_STATUS_PAUSE      (1)
+#define G_STATUS_LOST       (2)
 
 #define MAX_BUTTONS         (50)
 #define MAX_HOUSES          (50)
@@ -40,7 +41,7 @@
 
 #define HELP_FILE           ("data/help.txt")
 
-#define FONT_RETRON        ("assets/fonts/retron.ttf")
+#define FONT_RETRON         ("assets/fonts/retron.ttf")
 #define FONT_OETZ           ("assets/fonts/oetztype.ttf")
 
 #define GAME_ASSETS_MAP     ("assets/64x64_map_tile_2.png")
@@ -140,6 +141,7 @@ struct game_s {
     int tmp_animation;
 
     // GamePlay
+    float health;
     int house_id;
     int count_kill;
     int must_spawn;
@@ -158,6 +160,9 @@ struct game_s {
     int inventory[MAX_ITEMS_USER];
     sfTexture *t_inventory;
     sfSprite *s_inventory;
+
+    // Pause
+    sfText *txt_pause;
 
     // View
     sfView *view;
@@ -217,6 +222,7 @@ struct ennemies_s {
     int tmp_animation;
     float time_animation;
 
+    sfClock *clock;
     sfVector2f pos;
     sfSprite *s_ennemies;
 };
@@ -275,6 +281,7 @@ void ennemies_movement_down(env_t *env, int ennemies_id);
 
 // src/game/ennemies/fight.c
 void fight_ennemies(env_t *env);
+void fight_player(env_t *env);
 
 // src/game/ennemies/init.c
 void create_ennemies(env_t *env, sfVector2f pos, int type);
@@ -306,9 +313,14 @@ int check_collision(env_t *env, sfVector2i move);
 
 // src/game/events.c
 void game_events(env_t *env);
+void on_game_button_hitted(env_t *env, int button_id);
 
 // src/game/game.c
 void game_play_draw(env_t *env);
+
+// src/game/gameover.c
+void init_game_over(env_t *env);
+void game_display_game_over(env_t *env);
 
 // src/game/init.c
 void init_game(env_t *env);
@@ -332,6 +344,7 @@ void char_movement_top(env_t *env);
 void char_movement_down(env_t *env);
 
 // src/game/pause.c
+void init_pause(env_t *env);
 void game_display_pause(env_t *env);
 
 // src/game/quests.c

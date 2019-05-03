@@ -8,16 +8,18 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static char* MESSAGE_WIN =
-"Felicitation, tu as enfin\n\
-trouve ta clef.\n\n\
-Elle a ete ajoutee a ton\n\
-inventaire.";
+static const char* MESSAGE_WIN =
+"Felicitation, tu as trouve\n\
+un objet.\n\n\
+Il a ete ajoute a ton\n\
+inventaire ('i').";
 
-static char* MESSAGE_END =
+static const char* MESSAGE_END =
 "FELICITATION!\n\n\
-Tu as gagne trouve toutes\n\
-les clefs.";
+Tu as trouve toutes\n\
+les clefs.\n\
+Le jeu est termine, mais tu\n\
+peux te balader a ta guise.";
 
 static int check_collision_ennemies(env_t *env, int ennemies_id)
 {

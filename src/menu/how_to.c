@@ -52,7 +52,7 @@ void game_menu_draw_howto(env_t *env)
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_box[1], NULL);
     sfRenderWindow_drawSprite(env->core_s.window, env->menu_s.s_icon, NULL);
     for (size_t i = 0;env->menu_s.s_how_to[i] != NULL; i++)
-        sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[i], NULL);
+        sfRenderWindow_drawText(env->core_s.window, env->menu_s.t_how_to[i], 0);
     display_buttons(env);
     sfRenderWindow_display(env->core_s.window);
 }

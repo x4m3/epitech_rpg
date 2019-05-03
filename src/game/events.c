@@ -13,8 +13,6 @@ void game_events(env_t *env)
     if (env->core_s.event.type == sfEvtKeyPressed) {
         if (env->core_s.event.key.code == sfKeyEscape)
             init_pause(env);
-        if (env->core_s.event.key.code == sfKeyP)
-            init_game_over(env);
         if (env->game_s.actual_status != G_STATUS_PLAY)
             return;
         if (env->core_s.event.key.code == sfKeyDown)

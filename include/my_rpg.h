@@ -343,7 +343,7 @@ void init_textures_inventory(void);
 
 // src/game/message.c
 void init_message(env_t *env);
-void set_message(env_t *env, char *text, float time);
+void set_message(env_t *env, const char *text, float time);
 void display_message(env_t *env);
 
 // src/game/move.c

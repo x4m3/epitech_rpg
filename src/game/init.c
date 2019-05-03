@@ -11,11 +11,10 @@
 static char* WELCOME_MESSAGE =
 "Te voila prit au piege dans\n\
 la ville de Wardo Shark.\n\
-Cherche les clefs en allant\n\
-affronter les ennemies\n\
-dans les maisons.\n\
-Ces clefs seront ton\n\
-unique sortie.";
+Des objets ont ete voles\n\
+par des rebelles. Combat\n\
+les pour ramener les\n\
+objets.";
 
 static void reset_var_game(env_t *env)
 {
@@ -27,6 +26,10 @@ static void reset_var_game(env_t *env)
     env->game_s.house_id = 0;
     env->game_s.count_kill = 0;
     env->game_s.must_spawn = 0;
+    for (int i = 0; i < MAX_ENNEMIES; i++) {
+        if (env->ennemies_s[i].is_valid)
+            delete_enemmies(env, i);
+    }
     for (int i = 0; i < MAX_ITEMS_USER; i++)
         env->game_s.inventory[i] = -1;
 }

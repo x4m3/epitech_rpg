@@ -77,9 +77,9 @@
 #define _MUSIC_BACKGROUND    ("assets/sounds/background.ogg")
 #define _MUSIC_GAME          ("assets/sounds/game.ogg")
 
-#define MAX_TYPE_ITEMS      (2)
+#define MAX_TYPE_ITEMS      (11)
 #define MAX_ITEMS_USER      (8)
-
+#define MAX_LINE_HOW_TO     (50)
 
 struct inventory_type_t {
     int item_id;
@@ -90,10 +90,6 @@ struct inventory_type_t {
 };
 
 extern struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS];
-
-#define MAX_LINE_HOW_TO     (50)
-
-#define MAX_LINE_HOW_TO     (50)
 
 struct core_s {
     char *project_name;
@@ -338,7 +334,7 @@ void game_play(env_t *env);
 // src/game/inventory.c
 int get_item_by_name(char *name);
 void game_display_inventory(env_t *env);
-int add_item_user(env_t *env, char *item_name);
+int add_item_user(env_t *env);
 void init_textures_inventory(void);
 
 // src/game/message.c
@@ -361,6 +357,9 @@ void check_quest(env_t *env);
 
 // src/map/init.c
 int open_map(env_t *env, int argc, char *argv[]);
+
+// src/map/check.c
+int check_map(env_t *env);
 
 // src/map/texture.c
 sfIntRect get_texture_map(char texture);

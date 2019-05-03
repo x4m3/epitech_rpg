@@ -34,7 +34,9 @@ int main(int argc, char *argv[])
     if (check_args(argc, argv) == 84)
         return (84);
     if (open_map(&env, argc, argv) == 84)
-        return (84);
+        return (send_error("Error: can't open the map.\n"));
+    if (check_map(&env) == 84)
+        return (send_error("Error: invalid map.\n"));
     init_menu(&env);
     set_window(&env);
     game_state(&env);

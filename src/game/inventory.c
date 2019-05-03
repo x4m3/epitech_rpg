@@ -9,8 +9,17 @@
 #include "my_rpg.h"
 
 struct inventory_type_t inventory_type_s[MAX_TYPE_ITEMS] = {
-    {0, "Backpack", "assets/items/21.png", NULL},
-    {1, "Key", "assets/items/key.png", NULL}
+    {0, "Gas mask", "assets/items/5.png", NULL},
+    {1, "Rope", "assets/items/6.png", NULL},
+    {2, "Handcuffs", "assets/items/7.png", NULL},
+    {3, "Hook", "assets/items/9.png", NULL},
+    {4, "Mask", "assets/items/12.png", NULL},
+    {5, "Boots", "assets/items/13.png", NULL},
+    {6, "Lighter", "assets/items/14.png", NULL},
+    {7, "Lighter", "assets/items/14.png", NULL},
+    {8, "Backpack", "assets/items/21.png", NULL},
+    {9, "Matches", "assets/items/22.png", NULL},
+    {10, "Key", "assets/items/key.png", NULL}
 };
 
 void init_textures_inventory(void)
@@ -66,13 +75,13 @@ int user_has_item(env_t *env, char *name)
     return (0);
 }
 
-int add_item_user(env_t *env, char *item_name)
+int add_item_user(env_t *env)
 {
-    int item_id = get_item_by_name(item_name);
+    int rand_item = rand() % MAX_TYPE_ITEMS;
 
     for (int i = 0; i < MAX_ITEMS_USER; i++) {
         if (env->game_s.inventory[i] == -1) {
-            env->game_s.inventory[i] = item_id;
+            env->game_s.inventory[i] = rand_item;
             return (1);
         }
     }

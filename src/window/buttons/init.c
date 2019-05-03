@@ -10,9 +10,9 @@
 
 int create_button(env_t *env, sfVector3f pos, char *texture, char *text)
 {
-    int tmp = -1;
+    int tmp = get_free_slot_buttons(env);
     sfFloatRect bounds;
-    if ((tmp = get_free_slot_buttons(env)) == -1)
+    if (tmp == -1)
         return (-1);
     env->buttons_s[tmp].is_valid = true;
     env->buttons_s[tmp].text = my_strdup(text);

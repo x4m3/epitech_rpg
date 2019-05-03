@@ -11,8 +11,8 @@
 void display_help(char *argv[])
 {
     char buffer[1];
-    int fd = -1;
-    if ((fd = open(HELP_FILE, O_RDONLY)) == -1)
+    int fd = open(HELP_FILE, O_RDONLY);
+    if (fd == -1)
         my_putstr("Error: can't find help file.\n");
     else {
         my_putstr("Usage: ");

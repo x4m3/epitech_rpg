@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static const char* MESSAGE_START =
+static const char *MESSAGE_START =
 "Tu as vu juste!\n\n\
 Detruit les ennemies avec\n\
 la touche ESPACE.";

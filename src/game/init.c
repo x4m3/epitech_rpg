@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static char* WELCOME_MESSAGE =
+static char *WELCOME_MESSAGE =
 "Te voila prit au piege dans\n\
 la ville de Wardo Shark.\n\
 Des objets ont ete voles\n\

@@ -73,9 +73,9 @@ static void init_open_map(env_t *env, int fd)
 int open_map(env_t *env, int argc, char *argv[])
 {
     (void) argc;
-    int fd = -1;
+    int fd = open(argv[1], O_RDONLY);
 
-    if ((fd = open(argv[1], O_RDONLY)) == -1) {
+    if (fd == -1) {
         send_error("Can't open the file.\n");
         return (84);
     }

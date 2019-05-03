@@ -41,6 +41,7 @@ int is_over_button(env_t *env)
     }
     return (-1);
 }
+
 int get_button_by_text(env_t *env, char *text)
 {
     for (int i = 0; i < MAX_BUTTONS; i++) if (env->buttons_s[i].is_valid) {

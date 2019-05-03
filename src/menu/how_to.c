@@ -8,7 +8,6 @@
 #include "my.h"
 #include "my_rpg.h"
 
-
 size_t read_from_file(env_t *env)
 {
     int fd = open("data/how_to_play.txt", O_RDONLY);

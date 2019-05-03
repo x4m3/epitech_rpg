@@ -21,9 +21,9 @@ int count_word(char const *str)
     return (count);
 }
 
-char** arr_alloc(size_t x, size_t y)
+char **arr_alloc(size_t x, size_t y)
 {
-    char** pp = malloc(sizeof(*pp) * (x + 1));
+    char **pp = malloc(sizeof(*pp) * (x + 1));
 
     for (size_t i = 0; i < x; i++) {
         pp[i] = malloc(sizeof(**pp) * y);

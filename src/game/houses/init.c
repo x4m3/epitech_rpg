@@ -29,11 +29,10 @@ int get_max_house(env_t *env)
 
 void create_house(env_t *env, houses_t tmp_house)
 {
-    int tmp_id = -1;
+    int tmp_id = get_free_slot_house(env);
 
-    if ((tmp_id = get_free_slot_house(env)) == -1)
+    if (tmp_id == -1)
         return;
-
     env->houses_s[tmp_id].is_valid = true;
 
     env->houses_s[tmp_id].pos.x = tmp_house.pos.x;

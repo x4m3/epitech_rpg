@@ -40,11 +40,6 @@ void game_play_draw(env_t *env)
 
     display_message(env);
 
-    if (env->game_s.actual_status == G_STATUS_PAUSE)
-        game_display_pause(env);
-    if (env->game_s.actual_status == G_STATUS_LOST)
-        game_display_game_over(env);
-
     sfRenderWindow_setView(env->core_s.window, env->game_s.view);
     sfRenderWindow_display(env->core_s.window);
 }

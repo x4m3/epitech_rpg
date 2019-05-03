@@ -40,4 +40,7 @@ void on_game_button_hitted(env_t *env, int button_id)
         sfRenderWindow_setView(env->core_s.window, view);
         init_menu(env);
     }
+    if (get_button_by_text(env, "play") == button_id) {
+        init_pause(env);
+    }
 }

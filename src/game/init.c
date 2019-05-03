@@ -54,6 +54,12 @@ void game_play(env_t *env)
         check_quest(env);
         fight_player(env);
         move_ennemies(env);
+        game_play_draw(env);
     }
-    game_play_draw(env);
+    if (env->game_s.actual_status == G_STATUS_PAUSE) {
+        game_display_pause(env);
+    }
+    if (env->game_s.actual_status == G_STATUS_LOST) {
+        game_display_game_over(env);
+    }
 }

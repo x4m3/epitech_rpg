@@ -8,13 +8,13 @@
 #include "my.h"
 #include "my_rpg.h"
 
-static char *WELCOME_MESSAGE =
-"Te voila prit au piege dans\n\
-la ville de Wardo Shark.\n\
-Des objets ont ete voles\n\
-par des rebelles. Combat\n\
-les pour ramener les\n\
-objets.";
+static const char *WELCOME_MESSAGE =
+"Te voila prit au piege dans\n"\
+"la ville de Wardo Shark.\n"\
+"Des objets ont ete voles\n"\
+"par des rebelles. Combat\n"\
+"les pour ramener les\n"\
+"objets.";
 
 static void reset_var_game(env_t *env)
 {

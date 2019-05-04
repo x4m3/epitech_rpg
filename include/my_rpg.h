@@ -192,13 +192,12 @@ struct menu_s {
     char **s_how_to;
     sfText *t_how_to[MAX_LINE_HOW_TO];
 
-   // Settings
+    // Settings
     sfTexture *t_icon;
     sfTexture *t_box[2];
     sfSprite *s_icon;
     sfSprite *s_box[2];
     sfText *txt_sets[2];
-
 };
 typedef struct menu_s menu_t;
 

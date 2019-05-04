@@ -9,17 +9,17 @@
 #include "my_rpg.h"
 
 static const char *MESSAGE_WIN =
-"Felicitation, tu as trouve\n\
-un objet.\n\n\
-Il a ete ajoute a ton\n\
-inventaire ('i').";
+"Felicitation, tu as trouve\n"\
+"un objet.\n\n"\
+"Il a ete ajoute a ton\n"\
+"inventaire ('i').";
 
 static const char *MESSAGE_END =
-"FELICITATION!\n\n\
-Tu as trouve toutes les\n\
-objets voles.\n\
-Le jeu est termine, mais tu\n\
-peux te balader a ta guise.";
+"FELICITATION!\n\n"\
+"Tu as trouve toutes les\n"\
+"objets voles.\n"\
+"Le jeu est termine, mais tu\n"\
+"peux te balader a ta guise.";
 
 static int check_collision_ennemies(env_t *env, int ennemies_id)
 {

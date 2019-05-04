@@ -9,9 +9,9 @@
 #include "my_rpg.h"
 
 static const char *MESSAGE_START =
-"Tu as vu juste!\n\n\
-Detruit les ennemies avec\n\
-la touche ESPACE.";
+"Tu as vu juste!\n\n"\
+"Detruit les ennemies avec\n"\
+"la touche ESPACE.";
 
 static int check_house_area(env_t *env)
 {
@@ -58,4 +58,3 @@ void check_quest(env_t *env)
     }
     check_must_spawn(env);
 }
-

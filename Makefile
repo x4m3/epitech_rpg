@@ -5,7 +5,7 @@
 ## Automatic compilation
 ##
 
-NAME := 		my_rpg
+NAME := 	my_rpg
 
 INCLUDE :=	-I ./include/
 
@@ -60,11 +60,9 @@ OBJ :=		$(SRC:.c=.o)
 
 LIB :=		-L ./lib/my/ -l my
 
-CSFML :=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio -pedantic -std=c99
+CSFML :=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
-LIBMATH :=	-lm
-
-CFLAGS := 	-Wall -Wextra -g $(INCLUDE)
+CFLAGS := 	-W -Wall -Wextra -Werror $(INCLUDE)
 
 all:		$(NAME)
 

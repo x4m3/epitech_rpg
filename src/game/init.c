@@ -32,6 +32,20 @@ static void reset_var_game(env_t *env)
     }
     for (int i = 0; i < MAX_ITEMS_USER; i++)
         env->game_s.inventory[i] = -1;
+
+    env->game_s.clock = sfClock_create();
+}
+
+static void player_movements(env_t *env)
+{
+    if (sfKeyboard_isKeyPressed(sfKeyRight))
+        return char_movement_right(env);
+    if (sfKeyboard_isKeyPressed(sfKeyUp))
+        return char_movement_top(env);
+    if (sfKeyboard_isKeyPressed(sfKeyDown))
+        return char_movement_down(env);
+    if (sfKeyboard_isKeyPressed(sfKeyLeft))
+        return char_movement_left(env);
 }
 
 void init_game(env_t *env)
@@ -58,6 +72,7 @@ void game_play(env_t *env)
         fight_player(env);
         move_ennemies(env);
         game_play_draw(env);
+        player_movements(env);
     }
     if (env->game_s.actual_status == G_STATUS_PAUSE) {
         game_display_pause(env);

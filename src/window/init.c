@@ -8,17 +8,21 @@
 #include "my.h"
 #include "my_rpg.h"
 
-void set_window(env_t *env)
+int set_window(env_t *env)
 {
     env->core_s.window = sfRenderWindow_create(env->core_s.mode,
-    env->core_s.project_name, sfClose, NULL);
+    env->core_s.project_name, sfFullscreen, NULL);
 
     sfRenderWindow_setFramerateLimit(env->core_s.window,
     env->core_s.framerate);
 
+    if (env->core_s.framerate < 10 || DEFAULT_FRAMERATE < 10)
+        return (84);
+
     init_fonts(env);
     init_sounds(env);
     init_menu(env);
+    return (0);
 }
 
 void destroy(env_t *env)

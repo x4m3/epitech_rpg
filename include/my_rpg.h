@@ -17,7 +17,7 @@
 #define bool                (int)
 
 #define PROJECT_NAME        ("Wardo Shark")
-#define DEFAULT_FRAMERATE   (250)
+#define DEFAULT_FRAMERATE   (10)
 
 #define RESOLUTION_X        (1920)
 #define RESOLUTION_Y        (1080)
@@ -139,6 +139,8 @@ struct game_s {
     sfVector2f p_character;
     int rotation;
     int tmp_animation;
+    sfTime timer;
+    sfClock *clock;
 
     // GamePlay
     float health;
@@ -427,7 +429,7 @@ void init_fonts(env_t *env);
 void game_state(env_t *env);
 
 // src/window/init.c
-void set_window(env_t *env);
+int set_window(env_t *env);
 void destroy(env_t *env);
 void reset_var(env_t *env);
 

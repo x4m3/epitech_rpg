@@ -38,7 +38,8 @@ int main(int argc, char *argv[])
     if (check_map(&env) == 84)
         return (send_error("Error: invalid map.\n"));
     init_menu(&env);
-    set_window(&env);
+    if (set_window(&env) == 84)
+        return (send_error("Error: you must have at least 10 fps.\n"));
     game_state(&env);
     destroy(&env);
     return (0);

@@ -61,7 +61,6 @@ static void send_fight_player(env_t *env)
 
 void fight_ennemies(env_t *env)
 {
-    printf("test\n");
     for (int i = 0; i < MAX_ENNEMIES; i++) {
         if (!env->ennemies_s[i].is_valid)
             continue;

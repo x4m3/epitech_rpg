@@ -27,6 +27,23 @@ static int get_collision_texture(sfIntRect rect)
     return (0);
 }
 
+static int check_house_collision(env_t *env, sfVector2i move)
+{
+    sfVector2i pos = {
+        (env->game_s.p_character.x + move.x),
+        (env->game_s.p_character.y + move.y)
+    };
+
+    for (int i = 0; i < MAX_HOUSES; i++) {
+        if (!env->houses_s[i].is_valid)
+            continue;
+        sfFloatRect bounds = sfSprite_getGlobalBounds(env->houses_s[i].sprite);
+        if (sfFloatRect_contains(&bounds, pos.x, pos.y))
+            return (i);
+    }
+    return (-1);
+}
+
 int collision_circle(sfVector2f pos, sfCirclePos circle)
 {
     int d2 = (pos.x - circle.x) * (pos.x - circle.x) +
@@ -47,6 +64,8 @@ int check_collision(env_t *env, sfVector2i move)
     sfIntRect rect = sfSprite_getTextureRect(env->game_s.s_map[pos.y][pos.x]);
 
     if (get_collision_texture(rect))
+        return (1);
+    if (check_house_collision(env, move) != -1)
         return (1);
     return (0);
 }

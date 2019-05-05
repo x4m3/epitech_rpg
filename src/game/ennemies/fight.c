@@ -16,7 +16,7 @@ static const char *MESSAGE_WIN =
 
 static const char *MESSAGE_END =
 "FELICITATION!\n\n"\
-"Tu as trouve toutes les\n"\
+"Tu as trouve tous les\n"\
 "objets voles.\n"\
 "Le jeu est termine, mais tu\n"\
 "peux te balader a ta guise.";
@@ -40,12 +40,12 @@ static void send_fight_ennemies(env_t *env, int ennemies_id)
     env->ennemies_s[ennemies_id].health -= 50;
     if (env->ennemies_s[ennemies_id].health <= 0) {
         delete_enemmies(env, ennemies_id);
-        if (count_ennemies(env) <= 0) {
-            add_item_user(env);
-            set_message(env, MESSAGE_WIN, 8);
-            env->game_s.house_id++;
-        }
-        if (env->game_s.house_id > get_max_house(env))
+        if (count_ennemies(env) > 0)
+            return;
+        add_item_user(env);
+        set_message(env, MESSAGE_WIN, 8);
+        env->game_s.count_house++;
+        if (all_house_attacked(env))
             set_message(env, MESSAGE_END, 5);
     }
 }

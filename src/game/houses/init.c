@@ -27,6 +27,17 @@ int get_max_house(env_t *env)
     return (max_index);
 }
 
+int all_house_attacked(env_t *env)
+{
+    for (int i = 0; i < MAX_HOUSES; i++) {
+        if (!env->houses_s[i].is_valid)
+            continue;
+        if (!env->houses_s[i].is_attacked)
+            return (false);
+    }
+    return (true);
+}
+
 void create_house(env_t *env, houses_t tmp_house)
 {
     int tmp_id = get_free_slot_house(env);
@@ -34,6 +45,7 @@ void create_house(env_t *env, houses_t tmp_house)
     if (tmp_id == -1)
         return;
     env->houses_s[tmp_id].is_valid = true;
+    env->houses_s[tmp_id].is_attacked = false;
 
     env->houses_s[tmp_id].pos.x = tmp_house.pos.x;
     env->houses_s[tmp_id].pos.y = tmp_house.pos.y;
@@ -55,6 +67,7 @@ void delete_house(env_t *env, int house_id)
         sfSprite_destroy(env->houses_s[house_id].sprite);
 
     env->houses_s[house_id].is_valid = false;
+    env->houses_s[house_id].is_attacked = false;
 
     env->houses_s[house_id].pos.x = 0.0;
     env->houses_s[house_id].pos.y = 0.0;

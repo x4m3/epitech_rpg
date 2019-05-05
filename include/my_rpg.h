@@ -145,6 +145,7 @@ struct game_s {
     // GamePlay
     float health;
     int house_id;
+    int count_house;
     int count_kill;
     int must_spawn;
     sfClock *clock_spawn;
@@ -213,6 +214,7 @@ typedef struct character_s character_t;
 
 struct houses_s {
     int is_valid;
+    int is_attacked;
 
     sfVector2f pos;
 
@@ -306,6 +308,7 @@ void display_houses(env_t *env);
 // src/game/houses/init.c
 int count_houses_(env_t *env);
 int get_max_house(env_t *env);
+int all_house_attacked(env_t *env);
 void create_house(env_t *env, houses_t tmp_house);
 void delete_house(env_t *env, int house_id);
 

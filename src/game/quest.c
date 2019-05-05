@@ -40,7 +40,8 @@ static void check_must_spawn(env_t *env)
 
     if (env->game_s.must_spawn <= 0)
         return;
-
+    if (env->game_s.house_id == -1)
+        return;
     if (seconds > 1.5) {
         create_ennemies(env, env->houses_s[env->game_s.house_id].pos, 1);
         env->game_s.must_spawn--;
@@ -50,11 +51,14 @@ static void check_must_spawn(env_t *env)
 
 void check_quest(env_t *env)
 {
-    if (check_house_area(env) == env->game_s.house_id
-    && count_ennemies(env) <= 0) {
+    int house_id = check_house_area(env);
+    if (house_id != -1 && count_ennemies(env) <= 0) {
+        if (env->houses_s[house_id].is_attacked)
+            return;
+        env->game_s.house_id = house_id;
+        env->houses_s[house_id].is_attacked = true;
         set_message(env, MESSAGE_START, 4);
-
-        env->game_s.must_spawn = ((env->game_s.house_id + 1) * 3);
+        env->game_s.must_spawn = ((env->game_s.count_house + 1) * 3);
     }
     check_must_spawn(env);
 }

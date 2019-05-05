@@ -23,7 +23,8 @@ static void reset_var_game(env_t *env)
 
     env->game_s.inventory_open = false;
     env->game_s.health = 100.0;
-    env->game_s.house_id = 0;
+    env->game_s.house_id = -1;
+    env->game_s.count_house = 0;
     env->game_s.count_kill = 0;
     env->game_s.must_spawn = 0;
     for (int i = 0; i < MAX_ENNEMIES; i++) {

@@ -418,7 +418,7 @@ int get_free_slot_buttons(env_t *env);
 
 // src/window/buttons/init.c
 int create_button(env_t *env, sfVector3f pos, char *texture, char *text);
-void destroy_button(env_t *env, int button_id);
+int destroy_button(env_t *env, int button_id);
 void destroy_all_buttons(env_t *env);
 
 // src/window/events.c

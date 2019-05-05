@@ -23,6 +23,8 @@ size_t read_from_file(env_t *env)
         if (!line)
             return 1;
         env->menu_s.s_how_to[i++] = my_strdup(line);
+        if (env->menu_s.s_how_to[i - 1] == NULL)
+            return (84);
         free(line);
     }
     env->menu_s.s_how_to[i] = NULL;

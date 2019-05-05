@@ -21,6 +21,15 @@ static int check_args(int argc, char *argv[])
     return (0);
 }
 
+static int set_srand(void)
+{
+    int *seed = malloc(1);
+    if (seed == NULL)
+        return (84);
+    srand(*seed);
+    return (0);
+}
+
 int main(int argc, char *argv[])
 {
     env_t env;
@@ -28,8 +37,8 @@ int main(int argc, char *argv[])
     env.core_s.project_name = PROJECT_NAME;
     env.core_s.framerate = DEFAULT_FRAMERATE;
     env.core_s.mode = (sfVideoMode) {RESOLUTION_X, RESOLUTION_Y, BITS_PIXELS};
-    int *seed = malloc(1);
-    srand(*seed);
+    if (set_srand() == 84)
+        return (84);
     reset_var(&env);
     if (check_args(argc, argv) == 84)
         return (84);

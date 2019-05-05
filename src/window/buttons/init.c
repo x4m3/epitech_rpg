@@ -16,6 +16,8 @@ int create_button(env_t *env, sfVector3f pos, char *texture, char *text)
         return (-1);
     env->buttons_s[tmp].is_valid = true;
     env->buttons_s[tmp].text = my_strdup(text);
+    if (env->buttons_s[tmp].text == NULL)
+        return destroy_button(env, tmp);
     env->buttons_s[tmp].pos = (sfVector2f) {pos.x, pos.y};
     env->buttons_s[tmp].scale = pos.z;
     env->buttons_s[tmp].sprite = sfSprite_create();
@@ -31,12 +33,13 @@ int create_button(env_t *env, sfVector3f pos, char *texture, char *text)
     return (tmp);
 }
 
-void destroy_button(env_t *env, int button_id)
+int destroy_button(env_t *env, int button_id)
 {
     if (env->buttons_s[button_id].is_valid)
         sfSprite_destroy(env->buttons_s[button_id].sprite);
 
     env->buttons_s[button_id].is_valid = false;
+    return (0);
 }
 
 void destroy_all_buttons(env_t *env)
